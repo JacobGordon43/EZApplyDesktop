@@ -6,8 +6,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains as AC
 import login
 import time
+import json
+def handle_file(path):
+    try:
+        json_file = open('./json/login.json')
+        info = json.load(json_file)
+        json_file.close()
+        return info
+    except FileNotFoundError:
+        return 3
+    except:
+        return 5
 
-
+def input_click(driver, input):
+    hover = AC(driver).move_to_element(input)
+    hover.click().perform()
+    time.sleep(1)
+    
 def click_btn(driver, text_arr):
     print("Attempting to click on the button")
     for text in text_arr:

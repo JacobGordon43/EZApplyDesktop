@@ -65,6 +65,12 @@ def run_apply():
     result = main_app.apply(fields[4].get(), browser_value.get(), fields[7].get(), ["user", "pass"],)
     if result == 1:
         mBox.showinfo("Success", "It appears that your application was successfully submitted!")
+    elif result == 3:
+        mBox.showinfo("Missing File", "It appears that an important file was missing, the application could not be filled out.")
+    elif result == 4:
+        mBox.showinfo("Failure", "There was an issue while filling out the application")
+    elif result == 5:
+        mBox.showinfo("Unknown File Error", "There was an with handling files.")
     elif result == 15:
         mBox.showinfo("Failure", "It appears there was an issue with opening your browser.")
 

@@ -22,7 +22,9 @@ def find_application(driver):
     login_form = driver.find_elements(By.XPATH, "//label[contains(text(), 'Email')] | //*[contains(text(), 'Password')]")
     print(len(login_form), "Login Form")
     if len(login_form) > 0:
-        login.login(driver)
+        result = login.login(driver)
+        if result == 3 or result == 5:
+            return result
         print(len(btn_arr))
     elif len(btn_arr) > 0:
         print("Found apply button")
@@ -55,13 +57,20 @@ def apply(link, browser, path, login_info):
         return 15
 
 
-    driver.get("https://bcbsaz.wd1.myworkdayjobs.com/BCBSAZCareers/job/Phoenix/Intern---Cloud-Computing--Summer-2024-_R4244?source=LinkedIn")
+    driver.get("https://bcbsaz.wd1.myworkdayjobs.com/en-US/BCBSAZCareers/details/Clinical-Research-Coordinator---Medicaid_R4197?q=Intern&source=LinkedIn")
 
     found_application = False
+    completed = 0
     while not found_application:
-        find_application(driver)
+        found_application = find_application(driver)
+        if found_application == 3 or found_application == 5:
+            completed = found_application
+            break
+        
+    while completed == 0:
+        completed = insert.fill_out_application(driver)
 
-    return 1
+    return completed
 
 # main(["Test@cox.net", "Test"], "Software Engineer", "Phoenix, Arizona")
 
