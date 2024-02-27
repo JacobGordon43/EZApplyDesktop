@@ -9,6 +9,7 @@ import json
 import time
 import os
 import actions
+
 def enter_login_info(driver, values):
     print(values)
     # print(values["Email"])
@@ -36,32 +37,67 @@ def handle_input(driver, inputs, keyword, value):
             return True
         except:
             print("Input is not interactable")
-    # It was unable to fill in the data to the 
-    inputs = driver.find_elements(By.XPATH, "//*[contains(aria-label(), '" + keyword + "')]")
+    # It was unable to fill in the input, as such it will attempt to find the input field another way
+    inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::button[id^='input']")
+    
+    for input in inputs:
+        try:
+            actions.input_click(driver, input)
+            insert_response(input, value)
+            return True
+        except:
+            print("Input is not interactable")
+
+    print(len(inputs))
     return False
 
 def fill_out_application(driver):
     try:
+        counter = 0
+        # print("There are ", inputCount, " input fields in this page")
         questions_file = open("./json/questions.json")
         questions = json.load(questions_file)
         print(questions)
+
         for question, value in questions.items():
+            # Waits for inputs to be found on the page, indicating that it is loaded enough to continue
+            if counter == 0:
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input")))
             print("Iteration")
             print(question)
             print(value["keywords"])
             print(value["values"])
+            # Looks for keywords in a question to find the input
             for keyword in value["keywords"]:
                 print(keyword)
-                potential_inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::input")
+                # Finds inputs that contains the keyword
+                potential_inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::input | //label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
+                if len(potential_inputs) == 0:
+                    continue
                 input_done = handle_input(driver, potential_inputs, keyword, value["values"][0])
+                # Breaks out if the input was filled out successfully
                 if input_done:
+                    counter += 1
                     break
 
+        # Finds all the current labels on the page
+        labels = driver.find_elements(By.TAG_NAME, "label")
 
+        # Now that all questions have been looped through, it will now attempt to submit
+        actions.click_btn(driver, ["Continue", "Apply", "Complete", "Finish", "Submit"])
+        new_labels = driver.find_elements(By.TAG_NAME, "label")
+        
+        #The program will continuously check if the labels are the same on the page and sleep for a second until it changes
+        # When it changes, it will indicate the application has moved forward
+        while labels == new_labels:
+            new_labels = driver.find_elements(By.TAG_NAME, "label")
+            print("Waiting for the user to continue the application")
+            time.sleep(1)
+        
     except FileNotFoundError as e:
         print(e)
         return 3
-    except:
+    except Exception as e:
         print(e)
         return 4
     print("In fill out function")

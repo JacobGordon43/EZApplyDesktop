@@ -1,8 +1,73 @@
 {
-    
+    "about_us": {
+        "keywords": ["Hear", "About"],
+        "values": ["LinkedIn"],
+        "type": ["input"]
+    }, 
     "first_name": {
         "keywords": ["First Name", "First name", "first name"],
         "values": ["Jacob"],
         "type": ["input"]
+    },
+    "middle_name": {
+        "keywords": ["Middle Name", "Middle name", "middle name"],
+        "values": ["Paul"],
+        "type": ["input"]
+    },
+    "last_name": {
+        "keywords": ["Last Name", "Last name", "last name"],
+        "values": ["Gordon"],
+        "type": ["input"]
+    },
+    "address": {
+        "keywords": ["Address Line 1", "Address line 1", "address line 1"],
+        "values": ["1234 W. Example St."],
+        "type": ["input"]
+
+    },
+    "state": {
+        "keywords": ["State", "state"],
+        "values": ["Arizona"],
+        "type": ["select"]
+    },
+    "city": {
+        "keywords": ["City", "city"],
+        "values": ["Phoenix"],
+        "type": ["input"]
+    },
+    "zipcode": {
+        "keywords": ["Postal Code", "Postal code", "Zipcode", "Zip Code", "zipcode"],
+        "values": ["85309"],
+        "type": ["input"]
+    },
+    "county": {
+        "keywords": ["County", "county"],
+        "values": ["Maricopa"],
+        "type": ["input"]
+    },
+    "number": {
+        "keywords": ["Phone Number", "Phone number"],
+        "values": ["623-313-4313"],
+        "type": ["input"]
+    },
+    "previously_worked": {
+        "keywords": ["previously worked for", "previously worked at" ],
+        "values": ["No", "no"],
+        "type": ["check"]
+    },
+    "employment_type": {
+        "keywords": ["Desired Type of Employment", "Type of Employment", "Employment Type"],
+        "values": ["Full-Time"],
+        "type": ["select"]
+    },
+    "over_18": {
+        "keywords": ["Are you age 18 or over", "Are you over 18"],
+        "values": "Yes",
+        "type": ["select"]
+    }, 
+    "relocate": {
+        "keywords": ["relocate"],
+        "values": ["Yes"],
+        "type": ["select"]
     }
 }

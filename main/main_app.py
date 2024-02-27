@@ -16,6 +16,7 @@ options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36")
 
 def find_application(driver):
+    # Finds all labels on the page to identify whether the application has been progressed later
     WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Apply Manually')] | //*[contains(text(), 'Apply')] | //*[contains(text(), 'Login')] //*[contains(text(), 'Sign In')]")))
     btn_arr = driver.find_elements(By.XPATH, "//label[contains(text(), 'Apply Manually')] | //*[contains(text(), 'Apply')] | //*[contains(text(), 'Login')]")
     btn_arr.reverse()
