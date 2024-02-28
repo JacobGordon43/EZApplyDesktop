@@ -74,40 +74,46 @@ def process_questions(driver, questions):
                 counter += 1
                 break
 
-def add_education(driver):
-    education_file = open('./json/education.json')
-    education = actions.handle_file(education_file)
+# This is to handle logic for adding education & work history
+def process_history(driver, experiences, category):
 
+    # Waits until the category is found
+    try:
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(), '" + category + "')]")))
+    except:
+        return False
+    i = 0
+    # Goes through each educational or work history in experiences
+    for experience in experiences.keys():
+        print(experience)
+        # Gets the entire JSON formatting for the current experience
+        current_experience = experiences[experience]
+        print(current_experience)
+        # Goes through each question in the current experience
+        for question in current_experience:
+            print(current_experience[question])
+            input_found = False
+            keywords = current_experience[question]["keyword"]
+            for keyword in keywords:
+                # Attempts to find labels 
+                labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
+                label = labels[i]
+                
+
+def add_education(driver):
+    education = actions.handle_file('./json/education.json')
+
+    process_history(driver, education, "Education")
 
 def fill_out_application(driver):
+    add_education(driver)
     try:
         counter = 0
         # print("There are ", inputCount, " input fields in this page")
-        questions_file = open("./json/questions.json")
-        questions = json.load(questions_file)
+        questions = actions.handle_file("./json/questions.json")
         print(questions)
 
         process_questions(driver, questions)
-        # for question, value in questions.items():
-        #     # Waits for inputs to be found on the page, indicating that it is loaded enough to continue
-        #     if counter == 0:
-        #         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input")))
-        #     print("Iteration")
-        #     print(question)
-        #     print(value["keywords"])
-        #     print(value["values"])
-        #     # Looks for keywords in a question to find the input
-        #     for keyword in value["keywords"]:
-        #         print(keyword)
-        #         # Finds inputs that contains the keyword
-        #         potential_inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::input | //label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
-        #         if len(potential_inputs) == 0:
-        #             continue
-        #         input_done = handle_input(driver, potential_inputs, keyword, value["values"][0])
-        #         # Breaks out if the input was filled out successfully
-        #         if input_done:
-        #             counter += 1
-        #             break
 
         # Finds all the current labels on the page
         labels = driver.find_elements(By.TAG_NAME, "label")

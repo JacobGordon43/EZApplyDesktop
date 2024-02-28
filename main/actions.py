@@ -9,7 +9,7 @@ import time
 import json
 def handle_file(path):
     try:
-        json_file = open('./json/login.json')
+        json_file = open(path)
         info = json.load(json_file)
         json_file.close()
         return info
@@ -36,10 +36,10 @@ def click_btn(driver, text_arr):
             try:
                 hover = AC(driver).move_to_element(element)
                 hover.click().perform()
-                return
+                return True
             except:
                 print("There was an issue clicking on this, attempting another element")
-
+    return False
 
 def radio_select(driver, response, question_keyword):
     print("Attempting to select the radio button")
