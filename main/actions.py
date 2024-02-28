@@ -40,29 +40,6 @@ def click_btn(driver, text_arr):
             except:
                 print("There was an issue clicking on this, attempting another element")
 
-# def click_btn(driver, btn):
-#     print("Attempting to click on the button")
-#     # if btn_type == "login":
-#     #     btn = driver.find_element(By.CSS_SELECTOR, 'div[aria-label="Sign In"]')
-#     # elif btn_type == "create_account":
-#     #     WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, '//*[contains(text(), "Create"]')))
-#     #     btn_arr = driver.find_elements(By.XPATH, "//*[contains(text(), 'Create')]")
-#     #     count = len(btn_arr)
-#     #     print(count)
-#     #     for btn in btn_arr:
-#     #         try:
-#     #             btn.click()
-#     #             return
-#     #         except:
-#     #             continue
-#     # elif btn_type == "create":
-#     #    btn =  driver.find_element(By.CSS_SELECTOR, 'div[aria-label="Create Account"]')
-#     # print(By.CSS_SELECTOR, "'" + element + "[" + type +'="' + text + '"]'"'")
-#     # submit = driver.find_element(By.CSS_SELECTOR, "'" + element + "[" + type +'="' + text + '"]'"'")
-#     hover = AC(driver).move_to_element(btn)
-#     hover.click().perform()
-#     print("Button was clicked")
-#     time.sleep(3)
 
 def radio_select(driver, response, question_keyword):
     print("Attempting to select the radio button")
@@ -72,3 +49,27 @@ def radio_select(driver, response, question_keyword):
         hover.click().perform()
     except:
         print("There was an issue clicking on the radio select button")
+
+def find_application(driver):
+    # Finds all labels on the page to identify whether the application has been progressed later
+    WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Apply Manually')] | //*[contains(text(), 'Apply')] | //*[contains(text(), 'Login')] //*[contains(text(), 'Sign In')]")))
+    btn_arr = driver.find_elements(By.XPATH, "//label[contains(text(), 'Apply Manually')] | //*[contains(text(), 'Apply')] | //*[contains(text(), 'Login')]")
+    btn_arr.reverse()
+    login_form = driver.find_elements(By.XPATH, "//label[contains(text(), 'Email')] | //*[contains(text(), 'Password')]")
+    print(len(login_form), "Login Form")
+    if len(login_form) > 0:
+        result = login.login(driver)
+        if result == 3 or result == 5:
+            return result
+        print(len(btn_arr))
+    elif len(btn_arr) > 0:
+        print("Found apply button")
+        click_btn(driver, ["Apply Manually", "Apply", "Login", "Sign In"])
+
+
+    identifying_text = driver.find_elements(By.XPATH, "//*[contains(text(), 'My Information')]")
+    print(len(identifying_text))
+    if len(identifying_text) > 0:
+        return True
+    else:
+        return False

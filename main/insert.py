@@ -51,6 +51,34 @@ def handle_input(driver, inputs, keyword, value):
     print(len(inputs))
     return False
 
+def process_questions(driver, questions):
+    counter = 0
+    for question, value in questions.items():
+        # Waits for inputs to be found on the page, indicating that it is loaded enough to continue
+        if counter == 0:
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input")))
+        print("Iteration")
+        print(question)
+        print(value["keywords"])
+        print(value["values"])
+        # Looks for keywords in a question to find the input
+        for keyword in value["keywords"]:
+            print(keyword)
+            # Finds inputs that contains the keyword
+            potential_inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::input | //label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
+            if len(potential_inputs) == 0:
+                continue
+            input_done = handle_input(driver, potential_inputs, keyword, value["values"][0])
+            # Breaks out if the input was filled out successfully
+            if input_done:
+                counter += 1
+                break
+
+def add_education(driver):
+    education_file = open('./json/education.json')
+    education = actions.handle_file(education_file)
+
+
 def fill_out_application(driver):
     try:
         counter = 0
@@ -59,26 +87,27 @@ def fill_out_application(driver):
         questions = json.load(questions_file)
         print(questions)
 
-        for question, value in questions.items():
-            # Waits for inputs to be found on the page, indicating that it is loaded enough to continue
-            if counter == 0:
-                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input")))
-            print("Iteration")
-            print(question)
-            print(value["keywords"])
-            print(value["values"])
-            # Looks for keywords in a question to find the input
-            for keyword in value["keywords"]:
-                print(keyword)
-                # Finds inputs that contains the keyword
-                potential_inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::input | //label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
-                if len(potential_inputs) == 0:
-                    continue
-                input_done = handle_input(driver, potential_inputs, keyword, value["values"][0])
-                # Breaks out if the input was filled out successfully
-                if input_done:
-                    counter += 1
-                    break
+        process_questions(driver, questions)
+        # for question, value in questions.items():
+        #     # Waits for inputs to be found on the page, indicating that it is loaded enough to continue
+        #     if counter == 0:
+        #         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input")))
+        #     print("Iteration")
+        #     print(question)
+        #     print(value["keywords"])
+        #     print(value["values"])
+        #     # Looks for keywords in a question to find the input
+        #     for keyword in value["keywords"]:
+        #         print(keyword)
+        #         # Finds inputs that contains the keyword
+        #         potential_inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::input | //label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
+        #         if len(potential_inputs) == 0:
+        #             continue
+        #         input_done = handle_input(driver, potential_inputs, keyword, value["values"][0])
+        #         # Breaks out if the input was filled out successfully
+        #         if input_done:
+        #             counter += 1
+        #             break
 
         # Finds all the current labels on the page
         labels = driver.find_elements(By.TAG_NAME, "label")
@@ -94,6 +123,9 @@ def fill_out_application(driver):
             print("Waiting for the user to continue the application")
             time.sleep(1)
         
+        # TODO create a conditional that will determine if the application has been submitted and returns 1
+        # it will then be return 1 through each iteration of the process, unless there is an error, in which that value will be returned
+        return fill_out_application(driver)        
     except FileNotFoundError as e:
         print(e)
         return 3
