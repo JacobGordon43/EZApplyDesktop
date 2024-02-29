@@ -83,6 +83,7 @@ def process_history(driver, experiences, category):
     except:
         return False
     i = 0
+    experience_count = len(experiences)
     # Goes through each educational or work history in experiences
     for experience in experiences.keys():
         print(experience)
@@ -93,12 +94,34 @@ def process_history(driver, experiences, category):
         for question in current_experience:
             print(current_experience[question])
             input_found = False
+            counter = 0
             keywords = current_experience[question]["keyword"]
             for keyword in keywords:
                 # Attempts to find labels 
                 labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
-                label = labels[i]
-                
+                # Attempts to add a form if the keyword can't be found. This creates a new problem in where a form does not need to be added due to the keyword simply not being there.a
+                if len(labels) == 0:
+                    
+                    while not input_found and counter < 10:
+                        btns = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::*[contains(text(), 'Add')]")
+                   
+                    # Due to special needs, a click_btn function is not being used but rather the implementation of the code.
+                        for btn in btns:
+                            try:
+                                hover = AC(driver).move_to_element(btn)
+                                hover.click().perform()
+                                break
+                            except:
+                                print("There was an issue clicking on this, attempting another element")
+                        # Attempts to find the question
+                        labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
+                        label = labels[i]
+                        input_found = True
+
+                    if len(labels) == 0:
+                        continue
+                print(label)
+                time.sleep(2)
 
 def add_education(driver):
     education = actions.handle_file('./json/education.json')
