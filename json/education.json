@@ -56,5 +56,63 @@
             ],
             "type": ["input"]
         }
+    },
+    "asu": {
+        "school": {
+            "keyword": [
+                "School",
+                "University"
+            ],
+            "values": [
+                "Arizona State University"
+            ],
+            "type": ["input"]
+        },
+        "degree": {
+            "keyword": [
+                "Degree"
+            ],
+            "values": [
+                "BACHELOR - IN PROGRESS"
+            ],
+            "type": ["select"]
+        },
+        "study": {
+            "keyword": [
+                "Field of Study",
+                "Field",
+                "Study"
+            ],
+            "values": [
+                "Software Development",
+                "Computer Science"
+            ],
+            "type": ["input"]
+        },
+        "gpa": {
+            "keyword": [
+                "GPA"
+            ],
+            "values": ["3.75"],
+            "type": ["input"]
+        },
+        "from": {
+            "keyword": [
+                "From"
+            ],
+            "values": [
+                "2020"
+            ],
+            "type": ["input"]
+        },
+        "to": {
+            "keyword": [
+                "To"
+            ],
+            "values": [
+                "2024"
+            ],
+            "type": ["input"]
+        }
     }
 }
