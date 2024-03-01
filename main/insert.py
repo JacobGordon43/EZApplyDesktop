@@ -28,6 +28,15 @@ def insert_response(input, response):
     input.send_keys(response)
     input.send_keys(Keys.ENTER)
 
+def input_loop(driver, inputs, value):
+    for input in inputs:
+        try:
+            actions.input_click(driver, input)
+            insert_response(input, value)
+            return True
+        except:
+            print("Input is not interactable")
+    
 def handle_input(driver, inputs, keyword, value):
     # Attempts to find the input in the first array of inputs passed through
     for input in inputs:
@@ -40,6 +49,7 @@ def handle_input(driver, inputs, keyword, value):
     # It was unable to fill in the input, as such it will attempt to find the input field another way
     inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::button[id^='input']")
     
+    return input_loop(driver, inputs, value)
     for input in inputs:
         try:
             actions.input_click(driver, input)
@@ -100,28 +110,37 @@ def process_history(driver, experiences, category):
                 # Attempts to find labels 
                 labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
                 # Attempts to add a form if the keyword can't be found. This creates a new problem in where a form does not need to be added due to the keyword simply not being there.a
-                if len(labels) == 0:
-                    
-                    while not input_found and counter < 10:
-                        btns = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::*[contains(text(), 'Add')]")
-                   
-                    # Due to special needs, a click_btn function is not being used but rather the implementation of the code.
-                        for btn in btns:
-                            try:
-                                hover = AC(driver).move_to_element(btn)
-                                hover.click().perform()
-                                break
-                            except:
-                                print("There was an issue clicking on this, attempting another element")
-                        # Attempts to find the question
-                        labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
-                        label = labels[i]
-                        input_found = True
+                if len(labels) > 0:
+                    input_found = True
+                        
+                while not input_found and counter < 10:
+                    btns = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::*[contains(text(), 'Add')]")
+                
+                # Due to special needs, a click_btn function is not being used but rather the implementation of the code.
+                    for btn in btns:
+                        try:
+                            hover = AC(driver).move_to_element(btn)
+                            hover.click().perform()
+                            break
+                        except:
+                            print("There was an issue clicking on this, attempting another element")
+                    # Attempts to find the question
+                    labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
+                    label = labels[i]
+                    input_found = True
 
-                    if len(labels) == 0:
-                        continue
-                print(label)
-                time.sleep(2)
+                if len(labels) == 0:
+                    continue
+                else:
+                    inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::input[1] | //*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
+                    # input = inputs[i]     
+                    values = current_experience[question]["values"]
+                    for value in values:
+                        input_loop(driver, inputs, value)
+                    break
+            
+
+            time.sleep(2)
 
 def add_education(driver):
     education = actions.handle_file('./json/education.json')
