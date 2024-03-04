@@ -96,6 +96,19 @@ def process_history(driver, experiences, category):
     experience_count = len(experiences)
     # Goes through each educational or work history in experiences
     for experience in experiences.keys():
+        # For each experience, we will add an experience.
+        btns = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::*[contains(text(), 'Add')]")
+                
+        # Due to special needs, a click_btn function is not being used but rather the implementation of the code.
+        for btn in btns:
+            try:
+                hover = AC(driver).move_to_element(btn)
+                hover.click().perform()
+                break
+            except:
+                print("There was an issue clicking on this, attempting another element")
+        time.sleep(1)
+
         print(experience)
         # Gets the entire JSON formatting for the current experience
         current_experience = experiences[experience]
@@ -111,17 +124,7 @@ def process_history(driver, experiences, category):
                 labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
                 # Attempts to add a form if the keyword can't be found. This creates a new problem in where a form does not need to be added due to the keyword simply not being there.                        
                 while not input_found and counter < 10:
-                    btns = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::*[contains(text(), 'Add')]")
-                
-                # Due to special needs, a click_btn function is not being used but rather the implementation of the code.
-                    for btn in btns:
-                        try:
-                            hover = AC(driver).move_to_element(btn)
-                            hover.click().perform()
-                            break
-                        except:
-                            print("There was an issue clicking on this, attempting another element")
-                    time.sleep(1)
+                    
                     # Attempts to find the question
                     labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
                     # If the label is out of bounds, it will attempt to 
@@ -139,6 +142,7 @@ def process_history(driver, experiences, category):
 
                     input_found = True
 
+
                 if len(labels) == 0:
                     continue
                 else:
@@ -153,7 +157,8 @@ def process_history(driver, experiences, category):
                     for value in values:
                         input_loop(driver, inputs, value)
                     break
-    i += 1
+
+        i += 1
     if i < experience_count:
         actions.click_btn(driver, ["Add", "add"])
 
