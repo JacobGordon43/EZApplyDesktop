@@ -30,6 +30,9 @@ def insert_response(input, response):
 
 def input_loop(driver, inputs, value):
     for input in inputs:
+        print(input.get_attribute("type"))
+        if input.get_attribute("value") != "":
+            continue
         try:
             actions.input_click(driver, input)
             insert_response(input, value)
@@ -50,16 +53,7 @@ def handle_input(driver, inputs, keyword, value):
     inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::button[id^='input']")
     
     return input_loop(driver, inputs, value)
-    for input in inputs:
-        try:
-            actions.input_click(driver, input)
-            insert_response(input, value)
-            return True
-        except:
-            print("Input is not interactable")
 
-    print(len(inputs))
-    return False
 
 def process_questions(driver, questions):
     counter = 0
@@ -146,13 +140,16 @@ def process_history(driver, experiences, category):
                 if len(labels) == 0:
                     continue
                 else:
-                    inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::input[1] | //*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
-                    first_input_val = inputs[0].get_attribute('value')
-                    print(first_input_val)
-                    if first_input_val != "":
-                        # i += 1
-                        break
+                    inputs = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::input[1] | //*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
+                    if len(inputs) == 0:
+                        inputs = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
+                    # first_input_val = inputs[0].get_attribute('value')
+                    # print(first_input_val)
+                    # if first_input_val != "":
+                    #     # i += 1
+                    #     break
                     # input = inputs[i]     
+                    print(inputs[i].get_attribute('value'))
                     values = current_experience[question]["values"]
                     for value in values:
                         input_loop(driver, inputs, value)
