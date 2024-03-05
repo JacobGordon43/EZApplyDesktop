@@ -13,7 +13,7 @@ import actions
 def enter_login_info(driver, values):
     print(values)
     # print(values["Email"])
-    # TODO change element to elements and loopa through each element, inputting the information
+    # TODO change element to elements and loops through each element, inputting the information
     for key in values.keys():
         try: 
             inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + key + "')]//following::input[1]")    
@@ -31,8 +31,13 @@ def insert_response(input, response):
 def input_loop(driver, inputs, value):
     for input in inputs:
         print(input.get_attribute("type"))
-        if input.get_attribute("value") != "":
-            continue
+        no_matches = driver.find_elements(By.XPATH, "//*[contains(text(), 'No matches')]")
+        
+        for no_match in no_matches:
+            if no_match.is_displayed():
+                input.clear()
+        # if input.get_attribute("value") != "":
+        #     continue
         try:
             actions.input_click(driver, input)
             insert_response(input, value)
@@ -143,12 +148,7 @@ def process_history(driver, experiences, category):
                     inputs = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::input[1] | //*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
                     if len(inputs) == 0:
                         inputs = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
-                    # first_input_val = inputs[0].get_attribute('value')
-                    # print(first_input_val)
-                    # if first_input_val != "":
-                    #     # i += 1
-                    #     break
-                    # input = inputs[i]     
+
                     print(inputs[i].get_attribute('value'))
                     values = current_experience[question]["values"]
                     for value in values:
