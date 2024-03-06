@@ -31,13 +31,15 @@ def insert_response(input, response):
 def input_loop(driver, inputs, value):
     for input in inputs:
         print(input.get_attribute("type"))
+        print(input.get_attribute("value"))
         no_matches = driver.find_elements(By.XPATH, "//*[contains(text(), 'No matches')]")
         
         for no_match in no_matches:
             if no_match.is_displayed():
+                actions.input_click(driver, input)
                 input.clear()
-        # if input.get_attribute("value") != "":
-        #     continue
+        if input.get_attribute("value") != "":
+            continue
         try:
             actions.input_click(driver, input)
             insert_response(input, value)
