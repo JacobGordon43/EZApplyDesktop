@@ -8,7 +8,7 @@
             "values": [
                 "Grand Canyon University"
             ],
-            "type": ["input"]
+            "select" : false
         },
         "degree": {
             "keyword": [
@@ -17,7 +17,7 @@
             "values": [
                 "BACHELOR - IN PROGRESS"
             ],
-            "type": ["select"]
+            "select" : false
         },
         "study": {
             "keyword": [
@@ -29,14 +29,14 @@
                 "Software Development",
                 "Computer Science"
             ],
-            "type": ["input"]
+            "select" : false
         },
         "gpa": {
             "keyword": [
                 "GPA"
             ],
             "values": ["3.75"],
-            "type": ["input"]
+            "select" : false
         },
         "from": {
             "keyword": [
@@ -45,7 +45,7 @@
             "values": [
                 "2020"
             ],
-            "type": ["input"]
+            "select" : false
         },
         "to": {
             "keyword": [
@@ -54,7 +54,7 @@
             "values": [
                 "2024"
             ],
-            "type": ["input"]
+            "select" : false
         }
     },
     "asu": {
@@ -66,7 +66,7 @@
             "values": [
                 "Arizona State University"
             ],
-            "type": ["input"]
+            "select" : false
         },
         "degree": {
             "keyword": [
@@ -87,14 +87,14 @@
                 "Software Development",
                 "Computer Science"
             ],
-            "type": ["input"]
+            "select" : false
         },
         "gpa": {
             "keyword": [
                 "GPA"
             ],
             "values": ["3.75"],
-            "type": ["input"]
+            "select" : false
         },
         "from": {
             "keyword": [
@@ -103,7 +103,7 @@
             "values": [
                 "2020"
             ],
-            "type": ["input"]
+            "select" : false
         },
         "to": {
             "keyword": [
@@ -112,7 +112,7 @@
             "values": [
                 "2024"
             ],
-            "type": ["input"]
+            "select" : false
         }
     }
 }

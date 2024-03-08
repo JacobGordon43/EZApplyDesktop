@@ -34,6 +34,15 @@ def input_loop(driver, inputs, value):
         print(input.get_attribute("value"))
         no_matches = driver.find_elements(By.XPATH, "//*[contains(text(), 'No matches')]")
         
+        if value == True:
+            driver.execute_script("window.scrollBy(0, 50)")
+            hover = AC(driver).move_to_element(input)
+            hover.click().perform()
+            input_found = True
+            break
+        elif value == False:
+            break
+
         for no_match in no_matches:
             if no_match.is_displayed():
                 actions.input_click(driver, input)
@@ -143,18 +152,22 @@ def process_history(driver, experiences, category):
 
                     input_found = True
 
-
+                # Continues with the program if the question wasn't found
                 if len(labels) == 0:
                     continue
                 else:
-                    inputs = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::input[1] | //*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
-                    if len(inputs) == 0:
-                        inputs = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
+                    if current_experience[question]["select"]:
+                        inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
+                    elif current_experience[question]["textarea"]:
+                        inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::textarea[1]")
+                    else:
+                        inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::input[1]")
+                    
 
                     print(inputs[i].get_attribute('value'))
                     values = current_experience[question]["values"]
                     for value in values:
-                        input_loop(driver, inputs, value)
+                        input_loop(driver, [inputs], value)
                     break
 
         i += 1
@@ -168,8 +181,13 @@ def add_education(driver):
 
     process_history(driver, education, "Education")
 
+def add_work(driver):
+    work = actions.handle_file('./json/work.json')
+
+    process_history(driver, work, "Work")
+
 def fill_out_application(driver):
-    add_education(driver)
+    add_work(driver)
     try:
         counter = 0
         # print("There are ", inputCount, " input fields in this page")
