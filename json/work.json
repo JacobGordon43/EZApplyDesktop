@@ -3,69 +3,95 @@
         "title": {
             "keyword": ["Job Title", "Title"],
             "values": ["Bus Boy"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "company": {
             "keyword": ["Company"],
             "values": ["Shangri La"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "location": {
             "keyword": ["Location"],
             "values": ["Phoenix, Arizona"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "currently_employed": {
             "keyword": ["currently"],
             "values": [false],
-            "select" : true
+            "select" : false,
+            "textarea": false,
+            "checkbox" : true
         },
         "from": {
             "keyword": ["From"],
             "values": ["062017"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "to": {
             "keyword": ["To"],
             "values": ["062018"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "description": {
             "keyword": ["Description"],
             "values": ["As a bus boy, I cleaned the glass doors and bathroom mirrors at the start of every shift. My primary duties throughout my shift was to provide customers with drinks, clean off tables of dishes and wipe them down, keep my station clean and organized, and perform my daily task, such as doing a deep clean of a section of tables/booths or cleaning all metal with a cleaning solution. I ended every night by sweeping the floors and laying out napkins and silverware for the following day."],
-            "select" : false
+            "select" : false,
+            "textarea": true,
+            "checkbox" : false
         }
     },
     "job_2": {
         "title": {
             "keyword": ["Job Title", "Title"],
             "values": ["Warehouse Associate"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "company": {
             "keyword": ["Company"],
             "values": ["Amazon"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "location": {
             "keyword": ["Location"],
             "values": ["Phoenix, Arizona"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "currently_employed": {
             "keyword": ["currently"],
             "values": [true],
-            "select" : true
+            "select" : false,
+            "textarea": false,
+            "checkbox" : true
         },
         "from": {
             "keyword": ["From"],
             "values": ["072020"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "description": {
             "keyword": ["Description"],
             "values": ["As a bus boy, I cleaned the glass doors and bathroom mirrors at the start of every shift. My primary duties throughout my shift was to provide customers with drinks, clean off tables of dishes and wipe them down, keep my station clean and organized, and perform my daily task, such as doing a deep clean of a section of tables/booths or cleaning all metal with a cleaning solution. I ended every night by sweeping the floors and laying out napkins and silverware for the following day."],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         }
     }
 }

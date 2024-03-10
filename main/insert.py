@@ -167,7 +167,7 @@ def process_history(driver, experiences, category):
                     print(inputs[i].get_attribute('value'))
                     values = current_experience[question]["values"]
                     for value in values:
-                        input_loop(driver, [inputs], value)
+                        input_loop(driver, [inputs[i]], value)
                     break
 
         i += 1
