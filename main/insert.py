@@ -129,6 +129,7 @@ def process_history(driver, experiences, category):
             input_found = False
             counter = 0
             keywords = current_experience[question]["keyword"]
+            # Goes through each keyword 
             for keyword in keywords:
                 # Attempts to find labels 
                 labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
@@ -156,6 +157,7 @@ def process_history(driver, experiences, category):
                 if len(labels) == 0:
                     continue
                 else:
+                    # Attempts to find the correct input based on what type input type it should expect.
                     if current_experience[question]["select"]:
                         inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
                     elif current_experience[question]["textarea"]:
@@ -187,7 +189,8 @@ def add_work(driver):
     process_history(driver, work, "Work")
 
 def fill_out_application(driver):
-    add_work(driver)
+    actions.upload_resume(driver)
+    # add_work(driver)
     try:
         counter = 0
         # print("There are ", inputCount, " input fields in this page")

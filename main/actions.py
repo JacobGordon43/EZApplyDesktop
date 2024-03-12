@@ -7,6 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains as AC
 import login
 import time
 import json
+import os
 def handle_file(path):
     try:
         json_file = open(path)
@@ -41,6 +42,27 @@ def click_btn(driver, text_arr):
                 print("There was an issue clicking on this, attempting another element")
     return False
 
+# Enters the path to the resume file 
+def upload_resume(driver):
+    resume_path = os.getcwd() + "/uploadables/resume"
+    resume_dir = os.listdir(resume_path)
+    if len(resume_dir) == 0:
+        return
+    resume = resume_dir[0]
+    print(os.getcwd() + "/uploadables/resume/", resume)
+    file_input = driver.find_element(By.CSS_SELECTOR, "[type='file']")
+    file_input.send_keys(os.getcwd() + "/uploadables/resume/" + resume)
+    # try:
+    #     print(os.getcwd() + "/uploadables/resume/", resume)
+    #     file_input = driver.find_element(By.CSS_SELECTOR, "[type='file']")
+    #     file_input.send_keys(os.getcwd() + "/uploadables/resume/" + resume)
+    # except Exception as e:
+    #     print(e)
+    #     click_btn(driver, ["file"])
+    #     file_input = driver.find_element(By.CSS_SELECTOR, "[type='file']")
+    #     file_input.send_keys(os.getcwd() + "/uploadables/resume" + resume)
+
+
 def radio_select(driver, response, question_keyword):
     print("Attempting to select the radio button")
     try:
@@ -50,6 +72,7 @@ def radio_select(driver, response, question_keyword):
     except:
         print("There was an issue clicking on the radio select button")
 
+# Navigates the browser when it is first opened so that it get through any logging in or button clicks before it can access the actual application
 def find_application(driver):
     # Finds all labels on the page to identify whether the application has been progressed later
     WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Apply Manually')] | //*[contains(text(), 'Apply')] | //*[contains(text(), 'Login')] //*[contains(text(), 'Sign In')]")))
@@ -57,8 +80,10 @@ def find_application(driver):
     btn_arr.reverse()
     login_form = driver.find_elements(By.XPATH, "//label[contains(text(), 'Email')] | //*[contains(text(), 'Password')]")
     print(len(login_form), "Login Form")
+    # Checks to see if a login form ws found. If it was, it attempts to login.
     if len(login_form) > 0:
         result = login.login(driver)
+        # If it recieved an error message, 
         if result == 3 or result == 5:
             return result
         print(len(btn_arr))

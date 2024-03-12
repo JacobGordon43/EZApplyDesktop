@@ -90,7 +90,7 @@
             "keyword": ["Description"],
             "values": ["As a bus boy, I cleaned the glass doors and bathroom mirrors at the start of every shift. My primary duties throughout my shift was to provide customers with drinks, clean off tables of dishes and wipe them down, keep my station clean and organized, and perform my daily task, such as doing a deep clean of a section of tables/booths or cleaning all metal with a cleaning solution. I ended every night by sweeping the floors and laying out napkins and silverware for the following day."],
             "select" : false,
-            "textarea": false,
+            "textarea": true,
             "checkbox" : false
         }
     }

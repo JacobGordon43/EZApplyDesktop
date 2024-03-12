@@ -2,7 +2,9 @@ import tkinter as tk;
 import tkinter.messagebox as mBox;
 import main_app;
 from tkinter import filedialog
+from tkinter import Label
 import os
+import shutil
 # Setting up the window
 root = tk.Tk()
 root.geometry("800x500")
@@ -21,6 +23,9 @@ browser_value.set(OPTIONS[0])
 username = os.environ.get('USERNAME')
 browser_location = tk.StringVar(root)
 browser_location.set("C:\Program Files\Google\Chrome\Application")
+
+resume_location = tk.StringVar(root)
+
 menu = tk.OptionMenu(root, browser_value, *OPTIONS)
 
 def setBrowserLocation():
@@ -28,9 +33,31 @@ def setBrowserLocation():
     browser_location.set(filename)
     print("Selected: ", filename)
 
+def setResumeLocation():
+    filename = filedialog.askopenfilename(filetypes=[("PDF", "*.pdf")])
+    resume_location.set(filename)
+    uploadResume()
+    print("Selected: ", filename)
+
+# Uploads a selected pdf file resume from the users PC
+def uploadResume():
+    try:
+        # Removes current files in the resume folder.
+        shutil.copy(resume_location.get(), os.getcwd() + "/uploadables/resume")
+        for field in fields:
+            # Checks if the field is a labe
+            if type(field) is Label:
+                resume_path = os.getcwd() + "/uploadables/resume"
+                resume_dir = os.listdir(resume_path)
+                # Updates the Label to indicate the successful new file upload
+                field.config(fg="green", text=resume_dir[0])
+
+    except Exception as e:
+        print(e)
+        mBox.showinfo("Error", "There was an issue uploading your resume")
 
 # Setting up entry fields
-inputs = ["email", "password", "Job Title","Location", "Link", "Browser", "Select Location", "Browser Location"]
+inputs = ["email", "password", "Job Title","Location", "Link", "Browser", "Select Location", "Browser Location", "Upload Resume", "Uploaded Resume"]
 fields = []
 labels = []
 
@@ -43,12 +70,21 @@ for input in inputs:
         e = tk.Button(root, text="Select Browser Location", command=setBrowserLocation)
     elif input == "Browser Location":
         e = tk.Entry(root, textvariable=browser_location)
+    elif input == "Upload Resume":
+        e = tk.Button(root, text="Select Resume Location", command=setResumeLocation)
+    elif input == "Uploaded Resume":
+        resume_path = os.getcwd() + "/uploadables/resume"
+        resume_dir = os.listdir(resume_path)
+        if len(resume_dir) == 0:
+            e = tk.Label(root, text="No Resume Uploaded", fg="red")
+        else:
+            resume = resume_dir[0]
+            e = tk.Label(root, text=resume, fg="green")
     else:
         e = tk.Entry(root)    
 
     e.grid(row=i, column = 1)
     fields.append(e)
-
 
     lb = tk.Label(root, text=input + ":")
     lb.grid(row=i, column=0)
