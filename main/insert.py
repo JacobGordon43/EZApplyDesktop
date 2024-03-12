@@ -162,6 +162,7 @@ def process_history(driver, experiences, category):
                         inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
                     elif current_experience[question]["textarea"]:
                         inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::textarea[1]")
+                    # elif keyword == ""
                     else:
                         inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::input[1]")
                     
@@ -178,19 +179,29 @@ def process_history(driver, experiences, category):
 
         time.sleep(2)
 
+# Handles education forms to add all education history
 def add_education(driver):
-    education = actions.handle_file('./json/education.json')
+        education = driver.find_elements(By.XPATH, "//*[contains(text(), 'Education')]")
+        # Checks if education is on the page
+        if len(education) > 0:
+            education = actions.handle_file('./json/education.json')
 
-    process_history(driver, education, "Education")
-
+            process_history(driver, education, "Education")
+# Handles work forms to add all work history
 def add_work(driver):
-    work = actions.handle_file('./json/work.json')
-
-    process_history(driver, work, "Work")
+        work = driver.find_elements(By.XPATH, "//*[contains(text(), 'Work')]")
+        # Checks if work is on the page
+        if len(work) > 0:
+            work = actions.handle_file('./json/work.json')
+            process_history(driver, work, "Work")
 
 def fill_out_application(driver):
+    # Checks each before attempting to fill out the rest of the page
+    add_work(driver)
+    add_education(driver)
     actions.upload_resume(driver)
-    # add_work(driver)
+
+# Handles the majority of the logic
     try:
         counter = 0
         # print("There are ", inputCount, " input fields in this page")
@@ -222,5 +233,3 @@ def fill_out_application(driver):
     except Exception as e:
         print(e)
         return 4
-    print("In fill out function")
-    return 1

@@ -8,7 +8,9 @@
             "values": [
                 "Grand Canyon University"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "degree": {
             "keyword": [
@@ -17,7 +19,9 @@
             "values": [
                 "BACHELOR - IN PROGRESS"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "study": {
             "keyword": [
@@ -29,14 +33,18 @@
                 "Software Development",
                 "Computer Science"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "gpa": {
             "keyword": [
                 "GPA"
             ],
             "values": ["3.75"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
         },
         "from": {
             "keyword": [
@@ -45,7 +53,9 @@
             "values": [
                 "2020"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "to": {
             "keyword": [
@@ -54,7 +64,9 @@
             "values": [
                 "2024"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         }
     },
     "asu": {
@@ -66,7 +78,9 @@
             "values": [
                 "Arizona State University"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "degree": {
             "keyword": [
@@ -75,7 +89,9 @@
             "values": [
                 "BACHELOR - IN PROGRESS"
             ],
-            "type": ["select"]
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false         
         },
         "study": {
             "keyword": [
@@ -87,14 +103,18 @@
                 "Software Development",
                 "Computer Science"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "gpa": {
             "keyword": [
                 "GPA"
             ],
             "values": ["3.75"],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "from": {
             "keyword": [
@@ -103,7 +123,9 @@
             "values": [
                 "2020"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         },
         "to": {
             "keyword": [
@@ -112,7 +134,9 @@
             "values": [
                 "2024"
             ],
-            "select" : false
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false        
         }
     }
 }

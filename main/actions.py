@@ -44,23 +44,16 @@ def click_btn(driver, text_arr):
 
 # Enters the path to the resume file 
 def upload_resume(driver):
-    resume_path = os.getcwd() + "/uploadables/resume"
-    resume_dir = os.listdir(resume_path)
-    if len(resume_dir) == 0:
-        return
-    resume = resume_dir[0]
-    print(os.getcwd() + "/uploadables/resume/", resume)
-    file_input = driver.find_element(By.CSS_SELECTOR, "[type='file']")
-    file_input.send_keys(os.getcwd() + "/uploadables/resume/" + resume)
-    # try:
-    #     print(os.getcwd() + "/uploadables/resume/", resume)
-    #     file_input = driver.find_element(By.CSS_SELECTOR, "[type='file']")
-    #     file_input.send_keys(os.getcwd() + "/uploadables/resume/" + resume)
-    # except Exception as e:
-    #     print(e)
-    #     click_btn(driver, ["file"])
-    #     file_input = driver.find_element(By.CSS_SELECTOR, "[type='file']")
-    #     file_input.send_keys(os.getcwd() + "/uploadables/resume" + resume)
+    file_input = driver.find_elements(By.CSS_SELECTOR, "[type='file']")
+    if len(file_input) > 0:
+        resume_path = os.getcwd() + "/uploadables/resume"
+        resume_dir = os.listdir(resume_path)
+        if len(resume_dir) == 0:
+            return
+        resume = resume_dir[0]
+        print(os.getcwd() + "/uploadables/resume/", resume)
+        file_input[0].send_keys(os.getcwd() + "/uploadables/resume/" + resume)
+
 
 
 def radio_select(driver, response, question_keyword):

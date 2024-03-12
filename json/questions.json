@@ -2,72 +2,152 @@
     "about_us": {
         "keywords": ["Hear", "About"],
         "values": ["LinkedIn"],
-        "type": ["input"]
+        "type": ["input"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     }, 
     "first_name": {
         "keywords": ["First Name", "First name", "first name"],
         "values": ["Jacob"],
-        "type": ["input"]
+        "type": ["input"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "middle_name": {
         "keywords": ["Middle Name", "Middle name", "middle name"],
         "values": ["Paul"],
-        "type": ["input"]
+        "type": ["input"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "last_name": {
         "keywords": ["Last Name", "Last name", "last name"],
         "values": ["Gordon"],
-        "type": ["input"]
+        "type": ["input"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "address": {
         "keywords": ["Address Line 1", "Address line 1", "address line 1"],
         "values": ["1234 W. Example St."],
-        "type": ["input"]
-
+        "type": ["input"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "state": {
         "keywords": ["State", "state"],
         "values": ["Arizona"],
-        "type": ["select"]
+        "type": ["select"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "city": {
         "keywords": ["City", "city"],
         "values": ["Phoenix"],
-        "type": ["input"]
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "zipcode": {
         "keywords": ["Postal Code", "Postal code", "Zipcode", "Zip Code", "zipcode"],
         "values": ["85309"],
-        "type": ["input"]
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "county": {
         "keywords": ["County", "county"],
         "values": ["Maricopa"],
-        "type": ["input"]
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "number": {
         "keywords": ["Phone Number", "Phone number"],
         "values": ["623-313-4313"],
-        "type": ["input"]
+        "type": ["input"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "previously_worked": {
         "keywords": ["previously worked for", "previously worked at" ],
         "values": ["No", "no"],
-        "type": ["check"]
+        "type": ["check"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "employment_type": {
         "keywords": ["Desired Type of Employment", "Type of Employment", "Employment Type"],
         "values": ["Full-Time"],
-        "type": ["select"]
+        "type": ["select"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     },
     "over_18": {
         "keywords": ["Are you age 18 or over", "Are you over 18"],
         "values": "Yes",
-        "type": ["select"]
+        "type": ["select"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     }, 
     "relocate": {
         "keywords": ["relocate"],
         "values": ["Yes"],
-        "type": ["select"]
+        "type": ["select"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
+    },
+    "veteran": {
+        "keywords": ["veteran"],
+        "values": ["No"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
+    },
+    "work_legally":{
+        "keywords": ["work legally"],
+        "values": ["Yes"],
+        "select": true,
+        "textarea": false,
+        "checkbox": false
+    },
+    "felony":{
+        "keywords": ["felony"],
+        "values": ["No"],
+        "textarea": false,
+        "checkbox": false
+    },
+
+    "disability": {
+        "keywords": ["veteran"],
+        "values": ["No"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
+    },
+    "sex": {
+        "keywords": ["sex", "gender"],
+        "values": ["Male"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
+    },
+    "race": {
+        "keywords": ["race"],
+        "values": ["White"],
+        "select" : false,
+        "textarea": false,
+        "checkbox" : false
     }
 }
