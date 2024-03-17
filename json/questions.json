@@ -43,7 +43,7 @@
         "keywords": ["State", "state"],
         "values": ["Arizona"],
         "type": ["select"],
-        "select" : false,
+        "select" : true,
         "textarea": false,
         "checkbox" : false
     },
@@ -80,33 +80,33 @@
         "keywords": ["previously worked for", "previously worked at" ],
         "values": ["No", "no"],
         "type": ["check"],
-        "select" : false,
+        "select" : true,
         "textarea": false,
-        "checkbox" : false
+        "checkbox" : true
     },
     "employment_type": {
         "keywords": ["Desired Type of Employment", "Type of Employment", "Employment Type"],
         "values": ["Full-Time"],
         "type": ["select"],
-        "select" : false,
+        "select" : true,
         "textarea": false,
-        "checkbox" : false
+        "checkbox" : true
     },
     "over_18": {
         "keywords": ["Are you age 18 or over", "Are you over 18"],
         "values": "Yes",
         "type": ["select"],
-        "select" : false,
+        "select" : true,
         "textarea": false,
-        "checkbox" : false
+        "checkbox" : true
     }, 
     "relocate": {
         "keywords": ["relocate"],
         "values": ["Yes"],
         "type": ["select"],
-        "select" : false,
+        "select" : true,
         "textarea": false,
-        "checkbox" : false
+        "checkbox" : true
     },
     "veteran": {
         "keywords": ["veteran"],
@@ -125,10 +125,17 @@
     "felony":{
         "keywords": ["felony"],
         "values": ["No"],
+        "select": true,
         "textarea": false,
         "checkbox": false
     },
-
+    "compensation":{
+        "keywords": ["compensation", "salary"],
+        "values": ["20/hr"],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
     "disability": {
         "keywords": ["veteran"],
         "values": ["No"],

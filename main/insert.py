@@ -24,7 +24,10 @@ def enter_login_info(driver, values):
             print("There was an issue in the application.")
 
 # Simple function that enters a response to an input field
-def insert_response(input, response):
+def insert_response(driver, input, response):
+    # input.clear() does not clear an input field correctly. Using this should do so.
+    if input.get_attribute('type') == "text":
+        driver.execute_script('arguments[0].select()', input)
     input.send_keys(response)
     input.send_keys(Keys.ENTER)
 
@@ -51,7 +54,7 @@ def input_loop(driver, inputs, value):
             continue
         try:
             actions.input_click(driver, input)
-            insert_response(input, value)
+            insert_response(driver, input, value)
             return True
         except:
             print("Input is not interactable")
@@ -61,7 +64,7 @@ def handle_input(driver, inputs, keyword, value):
     for input in inputs:
         try:
             actions.input_click(driver, input)
-            insert_response(input, value)
+            insert_response(driver, input, value)
             return True
         except:
             print("Input is not interactable")
@@ -224,6 +227,9 @@ def fill_out_application(driver):
             print("Waiting for the user to continue the application")
             time.sleep(1)
         
+        completed = driver.find_elements(By.XPATH, "//*[contains(text(), 'completed']")
+        if len(completed) > 0:
+            return 0
         # TODO create a conditional that will determine if the application has been submitted and returns 1
         # it will then be return 1 through each iteration of the process, unless there is an error, in which that value will be returned
         return fill_out_application(driver)        
