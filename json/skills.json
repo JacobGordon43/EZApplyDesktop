@@ -1,0 +1,36 @@
+{
+    "skills": {
+        "keywords": [
+            "Skills"
+        ],
+        "values": [
+            "Problem Solving",
+            "C#",
+            "JavaScript",
+            "Express.js",
+
+            "Java",
+            "React.js",
+            "Database",
+            "JSON",
+            "MySQL",
+            "Web Development",
+            "PHP (Programming Language)",
+            "Object-Oriented Programming (OOP)",
+            "Cloud Computing",
+            "Hyper Text Markup Language (HTML)",
+            "Cascading Style Sheets (CSS)",
+            "MongoDB",
+            "API Development",
+            "Typescript",
+            "Angular",
+            "Spring Boot",
+            "MVC",
+            "Node",
+            "REST",
+            "Git"
+        ],
+        "type": ["input"]
+        
+    }
+}

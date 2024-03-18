@@ -36,7 +36,7 @@ def apply(link, browser, path, login_info):
         return 15
 
 
-    driver.get("https://bcbsaz.wd1.myworkdayjobs.com/en-US/BCBSAZCareers/details/Clinical-Research-Coordinator---Medicaid_R4197?q=Intern&source=LinkedIn")
+    driver.get("https://earlywarning.wd5.myworkdayjobs.com/earlywarningcareers/job/Intern---DevOps-Software-Engineering--Summer-2024-_REQ2024173?utm_source=ziprecruiter")
 
     found_application = False
     completed = 0

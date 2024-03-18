@@ -65,6 +65,19 @@ def handle_input(driver, inputs, keyword, value):
         try:
             actions.input_click(driver, input)
             insert_response(driver, input, value)
+            if keyword == "Skills":
+                # time.sleep(1)
+                # skill = driver.find_element(By.XPATH, "//*[text()='" + value + "']")
+                # hover = AC(driver).move_to_element(skill)
+                # hover.click().perform()
+                try:
+                    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//*[text()='" + value + "']")))
+                    skill = driver.find_element(By.XPATH, "//*[text()='" + value + "']")
+                    hover = AC(driver).move_to_element(skill)
+                    hover.click().perform()
+                    time.sleep(1)
+                except:
+                    driver.execute_script("window.scrollBy(0, 150)")
             return True
         except:
             print("Input is not interactable")
@@ -184,25 +197,37 @@ def process_history(driver, experiences, category):
 
 # Handles education forms to add all education history
 def add_education(driver):
-        education = driver.find_elements(By.XPATH, "//*[contains(text(), 'Education')]")
-        # Checks if education is on the page
-        if len(education) > 0:
-            education = actions.handle_file('./json/education.json')
+    education = driver.find_elements(By.XPATH, "//*[contains(text(), 'Education')]")
+    # Checks if education is on the page
+    if len(education) > 0:
+        education = actions.handle_file('./json/education.json')
 
-            process_history(driver, education, "Education")
+        process_history(driver, education, "Education")
 # Handles work forms to add all work history
 def add_work(driver):
-        work = driver.find_elements(By.XPATH, "//*[contains(text(), 'Work')]")
-        # Checks if work is on the page
-        if len(work) > 0:
-            work = actions.handle_file('./json/work.json')
-            process_history(driver, work, "Work")
+    work = driver.find_elements(By.XPATH, "//*[contains(text(), 'Work')]")
+    # Checks if work is on the page
+    if len(work) > 0:
+        work = actions.handle_file('./json/work.json')
+        process_history(driver, work, "Work")
+
+def add_skills(driver):
+    skills = driver.find_elements(By.XPATH, "//*[contains(text(), 'Work')]")
+    # Checks if work is on the page
+    if len(skills) > 0:
+        skills = actions.handle_file('./json/skills.json')
+        print(skills['skills']['values'])
+        for skill in skills['skills']["values"]:
+            inputs = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]//following::input[1]")
+            handle_input(driver, inputs, "Skills", skill)
+            print(skill)
 
 def fill_out_application(driver):
     # Checks each before attempting to fill out the rest of the page
-    add_work(driver)
-    add_education(driver)
-    actions.upload_resume(driver)
+    # add_work(driver)
+    # add_education(driver)
+    # actions.upload_resume(driver)
+    add_skills(driver)
 
 # Handles the majority of the logic
     try:
@@ -212,7 +237,6 @@ def fill_out_application(driver):
         print(questions)
 
         process_questions(driver, questions)
-
         # Finds all the current labels on the page
         labels = driver.find_elements(By.TAG_NAME, "label")
 
@@ -227,7 +251,7 @@ def fill_out_application(driver):
             print("Waiting for the user to continue the application")
             time.sleep(1)
         
-        completed = driver.find_elements(By.XPATH, "//*[contains(text(), 'completed']")
+        completed = driver.find_elements(By.XPATH, "//*[contains(text(), 'completed')]")
         if len(completed) > 0:
             return 0
         # TODO create a conditional that will determine if the application has been submitted and returns 1

@@ -50,7 +50,13 @@ def create_account(driver):
     print("Attempting to create an account, finding the signup link") 
 
     login_info = AC.handle_file("./json/create_account.json")
-
+    checkboxes = driver.find_elements(By.XPATH, "//*[@type='checkbox']")
+    try:
+        for checkbox in checkboxes:
+            AC.input_click(driver, checkbox)
+    except Exception as e:
+        print(e)
+        print("Not clickable")
     insert.enter_login_info(driver, login_info)
     
     AC.click_btn(driver, ["Create Account", "Sign Up"])
