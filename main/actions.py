@@ -8,6 +8,27 @@ import login
 import time
 import json
 import os
+
+def handle_browser(browser, path):
+    print("The browse is ", browser)
+    try:
+        if browser == "Chrome":
+            options = webdriver.ChromeOptions()
+            options.add_argument('--start-maximized')
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36")
+            driver = webdriver.Chrome(options=options)
+        elif browser == "FireFox":
+            driver = webdriver.Firefox(path)
+        elif browser == "Edge":
+            driver = webdriver.Edge(path)
+        else:
+            # Error for an issue with the browser
+            return 15
+        return driver
+    except:
+        return 15
+    
 def handle_file(path):
     try:
         json_file = open(path)
