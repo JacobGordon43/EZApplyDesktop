@@ -34,16 +34,16 @@ def setBrowserLocation():
     print("Selected: ", filename)
 
 def setResumeLocation():
-    filename = filedialog.askopenfilename(filetypes=[("PDF", "*.pdf")])
+    filename = filedialog.askopenfilename(filetypes=[("PDF", "*.pdf")])    
     resume_location.set(filename)
-    uploadResume()
+    uploadResume(resume_location.get())
     print("Selected: ", filename)
 
 # Uploads a selected pdf file resume from the users PC
-def uploadResume():
+def uploadResume(resume):
     try:
         # Removes current files in the resume folder.
-        shutil.copy(resume_location.get(), os.getcwd() + "/uploadables/resume")
+        shutil.copy(resume, os.getcwd() + "/uploadables/resume")
         for field in fields:
             # Checks if the field is a labe
             if type(field) is Label:
@@ -51,7 +51,7 @@ def uploadResume():
                 resume_dir = os.listdir(resume_path)
                 # Updates the Label to indicate the successful new file upload
                 field.config(fg="green", text=resume_dir[0])
-
+    
     except Exception as e:
         print(e)
         mBox.showinfo("Error", "There was an issue uploading your resume")
