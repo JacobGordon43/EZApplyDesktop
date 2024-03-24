@@ -82,7 +82,7 @@ def handle_input(driver, inputs, keyword, value):
         except:
             print("Input is not interactable")
     # It was unable to fill in the input, as such it will attempt to find the input field another way
-    inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::button[id^='input']")
+    inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
     
     return input_loop(driver, inputs, value)
 
@@ -104,6 +104,8 @@ def process_questions(driver, questions):
             potential_inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + keyword + "')]//following::input | //label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')]")
             if len(potential_inputs) == 0:
                 continue
+            if keyword == "race":
+                print(keyword)
             input_done = handle_input(driver, potential_inputs, keyword, value["values"][0])
             # Breaks out if the input was filled out successfully
             if input_done:
@@ -212,7 +214,7 @@ def add_work(driver):
         process_history(driver, work, "Work")
 
 def add_skills(driver):
-    skills = driver.find_elements(By.XPATH, "//*[contains(text(), 'Work')]")
+    skills = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]")
     # Checks if work is on the page
     if len(skills) > 0:
         skills = actions.handle_file('./json/skills.json')
@@ -224,10 +226,11 @@ def add_skills(driver):
 
 def fill_out_application(driver):
     # Checks each before attempting to fill out the rest of the page
-    # add_work(driver)
-    # add_education(driver)
-    # actions.upload_resume(driver)
     add_skills(driver)
+    add_work(driver)
+    add_education(driver)
+    actions.upload_resume(driver)
+
 
 # Handles the majority of the logic
     try:

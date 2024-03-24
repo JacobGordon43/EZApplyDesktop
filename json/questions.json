@@ -93,7 +93,7 @@
         "checkbox" : true
     },
     "over_18": {
-        "keywords": ["Are you age 18 or over", "Are you over 18"],
+        "keywords": ["Are you age 18 or over", "Are you over 18", "18"],
         "values": "Yes",
         "type": ["select"],
         "select" : true,
@@ -108,44 +108,10 @@
         "textarea": false,
         "checkbox" : true
     },
-    "skillsets": {
-        "keywords": [
-            "Skills"
-        ],
-        "values": [
-            "Problem Solving",
-            "C#",
-            "JavaScript",
-            "Express.js",
-            "Java",
-            "React.js",
-            "Database",
-            "JSON",
-            "MySQL",
-            "Web Development",
-            "PHP (Programming Language)",
-            "Object-Oriented Programming (OOP)",
-            "Cloud Computing",
-            "Hyper Text Markup Language (HTML)",
-            "Cascading Style Sheets (CSS)",
-            "MongoDB",
-            "API Development",
-            "Typescript",
-            "Angular",
-            "Spring Boot",
-            "MVC",
-            "Node",
-            "REST",
-            "Git"
-        ],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false    
-    },
     "veteran": {
         "keywords": ["veteran"],
         "values": ["No"],
-        "select" : false,
+        "select" : true,
         "textarea": false,
         "checkbox" : false
     },
@@ -185,7 +151,7 @@
         "checkbox" : false
     },
     "race": {
-        "keywords": ["race"],
+        "keywords": ["race", "ethnicity"],
         "values": ["White"],
         "select" : false,
         "textarea": false,

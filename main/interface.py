@@ -34,7 +34,7 @@ def setBrowserLocation():
     print("Selected: ", filename)
 
 def setResumeLocation():
-    filename = filedialog.askopenfilename(filetypes=[("PDF", "*.pdf")])
+    filename = filedialog.askopenfilename(filetypes=[("PDF", "*.pdf"), ("Word", "*.docx"), ("Word", "*.doc"), ("Text", "*.txt")])
     resume_location.set(filename)
     uploadResume()
     print("Selected: ", filename)

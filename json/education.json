@@ -78,7 +78,7 @@
             "values": [
                 "Arizona State University"
             ],
-            "select" : false,
+            "select" : true,
             "textarea": false,
             "checkbox" : false        
         },
@@ -89,7 +89,7 @@
             "values": [
                 "BACHELOR - IN PROGRESS"
             ],
-            "select" : false,
+            "select" : true,
             "textarea": false,
             "checkbox" : false         
         },
