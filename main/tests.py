@@ -2,28 +2,28 @@ import actions as AC
 import insert
 import interface
 
-# def test_browser_error():
-#     result = AC.handle_browser("Not a browser option", "path")
-#     if result == 15:
-#         return True
-#     else:
-#         return False
+def test_browser_error():
+    result = AC.handle_browser("Not a browser option", "path")
+    if result == 15:
+        return True
+    else:
+        return False
 
-# if test_browser_error:
-#     print("Browser Error functionality: Successful")
-# else:
-#     print("Browser Error functionality: Unsuccessful")
+if test_browser_error:
+    print("Browser Error functionality: Successful")
+else:
+    print("Browser Error functionality: Unsuccessful")
 
-# def test_browser_opens():
-#     link = "https://www.youtube.com/"
-#     driver = AC.handle_browser("Chrome", "path")
-#     driver.get(link)
-#     return driver.current_url == link
+def test_browser_opens():
+    link = "https://www.youtube.com/"
+    driver = AC.handle_browser("Chrome", "path")
+    driver.get(link)
+    return driver.current_url == link
 
-# if test_browser_opens:
-#     print("Browser opening functionality: Successful")
-# else:
-#     print("Browser opening functionality: Unsuccessful")
+if test_browser_opens:
+    print("Browser opening functionality: Successful")
+else:
+    print("Browser opening functionality: Unsuccessful")
 
 # # Tests both uploading a resume successfully and limiting uploadable files to text, work, and pdfs
 def test_resume_upload():
@@ -49,16 +49,16 @@ def test_find_application():
             break    
     return found
 
-# if test_find_application():
-#     print("Application found job application: Successful")
-# else:
-#     print("Application found job application: Unsuccessful")
+if test_find_application():
+    print("Application found job application: Successful")
+else:
+    print("Application found job application: Unsuccessful")
 
 # This test is tested by not by a return value 
-# def test_resume_pauses():
-#     driver = AC.handle_browser("Chrome", "path")
-#     driver.get("https://earlywarning.wd5.myworkdayjobs.com/earlywarningcareers/job/Intern---DevOps-Software-Engineering--Summer-2024-_REQ2024173?utm_source=ziprecruiter")
-#     AC.find_application(driver)
-#     insert.fill_out_application(driver)
+def test_resume_pauses():
+    driver = AC.handle_browser("Chrome", "path")
+    driver.get("https://earlywarning.wd5.myworkdayjobs.com/earlywarningcareers/job/Intern---DevOps-Software-Engineering--Summer-2024-_REQ2024173?utm_source=ziprecruiter")
+    AC.find_application(driver)
+    insert.fill_out_application(driver)
 
-# test_resume_pauses()
+test_resume_pauses()
