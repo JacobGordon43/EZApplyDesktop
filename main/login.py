@@ -9,7 +9,6 @@ import time
 import actions as AC
 # Logs the user into LinkedIn to begin the process
 # Use https://stackoverflow.com/questions/76176715/unable-to-click-the-sign-in-button-on-workday-login later to attempt to help log in on workday
-
 def login(driver):
     try:
         print("Logging in")

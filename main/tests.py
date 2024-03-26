@@ -54,11 +54,7 @@ if test_find_application():
 else:
     print("Application found job application: Unsuccessful")
 
-<<<<<<< HEAD
-# # This test is tested by not by a return value 
-=======
 # This test is tested by not by a return value 
->>>>>>> 3ec02ae8ce6264c0dac2a9c85a2fa733f2415ad1
 def test_resume_pauses():
     driver = AC.handle_browser("Chrome", "path")
     driver.get("https://earlywarning.wd5.myworkdayjobs.com/earlywarningcareers/job/Intern---DevOps-Software-Engineering--Summer-2024-_REQ2024173?utm_source=ziprecruiter")

@@ -5,9 +5,7 @@ from tkinter import filedialog
 from tkinter import Label
 import os
 import shutil
-import requests
-import aws
-import json
+from pathlib import Path
 # Setting up the UI of the main window
 main_ui = tk.Tk()
 main_ui.geometry("800x500")
@@ -30,6 +28,20 @@ browser_location.set("C:\Program Files\Google\Chrome\Application")
 resume_location = tk.StringVar(main_ui)
 
 menu = tk.OptionMenu(main_ui, browser_value, *OPTIONS)
+# Logouts the user by deleting the necessary files and closing the window
+def logout():
+    #Uses error handling in the event that the file has already been deleted
+    try:
+        login_path = Path('./json/login.json')
+        login_path.unlink()
+    except Exception as e:
+        print(e)
+    try:
+        register_path = Path('./json/create_account.json')
+        register_path.unlink()
+    except Exception as e:
+        print(e)
+    main_ui.destroy()
     
 def setBrowserLocation():
     filename = filedialog.askopenfilename()
@@ -115,6 +127,8 @@ def run_apply():
 
 link_apply = tk.Button(main_ui, text="Apply to link", command=run_apply)
 link_apply.place(relx=0.6, rely=0.9, anchor=tk.CENTER)
+logout_btn = tk.Button(main_ui, text="Logout", command=logout)
+logout_btn.place(relx=0.5, rely=0.9, anchor=tk.CENTER)
 
 
 main_ui.mainloop()

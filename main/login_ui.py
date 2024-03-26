@@ -6,7 +6,6 @@ from tkinter import Label
 import tkinter.messagebox as mBox
 # import interface
 def login():
-    # mBox.showinfo("Credentials", ("Credentials are ", username_entry.get(), "and ", password_entry.get()))
     url = aws.login_url
     headers = {"Content-Type": "application/json"}
     params = {}
@@ -16,6 +15,10 @@ def login():
     print(json.loads(response.text))
     print(response.status_code)
     if(response.status_code == 200):
+        data = json.loads(data)
+        with open("./json/login.json", 'w') as file: json.dump(data, file, indent=4)
+        with open("./json/create_account.json", 'w') as file: json.dump(data, file, indent=4)
+
         import interface
         root.destroy()
 
