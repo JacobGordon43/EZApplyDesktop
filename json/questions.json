@@ -141,7 +141,7 @@
         "values": ["No"],
         "select" : false,
         "textarea": false,
-        "checkbox" : false
+        "checkbox" : true
     },
     "sex": {
         "keywords": ["sex", "gender"],

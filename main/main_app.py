@@ -10,7 +10,7 @@ import time
 import os
 import actions as AC
 import login
-
+import math
 
 def apply(link, browser, path, login_info):
     driver = AC.handle_browser(browser, path)
@@ -43,14 +43,24 @@ def apply(link, browser, path, login_info):
 
     found_application = False
     completed = 0
+
+
     while not found_application:
         found_application = AC.find_application(driver)
         if found_application == 3 or found_application == 5:
             completed = found_application
             break
-        
+    
+    questions = AC.handle_file("./json/questions.json")
     while completed == 0:
-        completed = insert.fill_out_application(driver)
+        results = insert.fill_out_application(driver, questions)
+        # If results is non a number then it should be an array of JSON that will be the updated questions. This helps in optimization and fixing potential issues. i.e 'city' identifiying with 'ethnicity'
+        # If it is a number, then it is the value that should be returned to the UI to inform the user of completion or error.
+        if math.isnan(results):
+            questions = results
+        else:
+            completed = results
+
 
     return completed
 

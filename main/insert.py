@@ -89,11 +89,12 @@ def handle_input(driver, inputs, keyword, value):
 
 def process_questions(driver, questions):
     counter = 0
-    for question, value in questions.items():
+    for question, value in questions.copy().items():
         # Waits for inputs to be found on the page, indicating that it is loaded enough to continue
         if counter == 0:
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input")))
         print("Iteration")
+        print(questions)
         print(question)
         print(value["keywords"])
         print(value["values"])
@@ -109,9 +110,11 @@ def process_questions(driver, questions):
             input_done = handle_input(driver, potential_inputs, keyword, value["values"][0])
             # Breaks out if the input was filled out successfully
             if input_done:
+                # Removes the question from being iterated over again later
+                del questions[question]
                 counter += 1
                 break
-
+    return questions
 # This is to handle logic for adding education & work history
 def process_history(driver, experiences, category):
 
@@ -224,7 +227,7 @@ def add_skills(driver):
             handle_input(driver, inputs, "Skills", skill)
             print(skill)
 
-def fill_out_application(driver):
+def fill_out_application(driver, questions):
     # Checks each before attempting to fill out the rest of the page
     add_skills(driver)
     add_work(driver)
@@ -236,10 +239,9 @@ def fill_out_application(driver):
     try:
         counter = 0
         # print("There are ", inputCount, " input fields in this page")
-        questions = actions.handle_file("./json/questions.json")
         print(questions)
 
-        process_questions(driver, questions)
+        result = process_questions(driver, questions)
         # Finds all the current labels on the page
         labels = driver.find_elements(By.TAG_NAME, "label")
 
@@ -259,7 +261,7 @@ def fill_out_application(driver):
             return 0
         # TODO create a conditional that will determine if the application has been submitted and returns 1
         # it will then be return 1 through each iteration of the process, unless there is an error, in which that value will be returned
-        return fill_out_application(driver)        
+        return result
     except FileNotFoundError as e:
         print(e)
         return 3

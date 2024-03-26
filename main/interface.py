@@ -5,10 +5,13 @@ from tkinter import filedialog
 from tkinter import Label
 import os
 import shutil
-# Setting up the window
-root = tk.Tk()
-root.geometry("800x500")
-root.title("Automatic Job Application Applier")
+import requests
+import aws
+import json
+# Setting up the UI of the main window
+main_ui = tk.Tk()
+main_ui.geometry("800x500")
+main_ui.title("EZApply")
 
 # Browser Options
 OPTIONS = [
@@ -17,17 +20,17 @@ OPTIONS = [
     "FireFox"
 ]
 
-browser_value = tk.StringVar(root)
+browser_value = tk.StringVar(main_ui)
 browser_value.set(OPTIONS[0])
 
 username = os.environ.get('USERNAME')
-browser_location = tk.StringVar(root)
+browser_location = tk.StringVar(main_ui)
 browser_location.set("C:\Program Files\Google\Chrome\Application")
 
-resume_location = tk.StringVar(root)
+resume_location = tk.StringVar(main_ui)
 
-menu = tk.OptionMenu(root, browser_value, *OPTIONS)
-
+menu = tk.OptionMenu(main_ui, browser_value, *OPTIONS)
+    
 def setBrowserLocation():
     filename = filedialog.askopenfilename()
     browser_location.set(filename)
@@ -36,14 +39,14 @@ def setBrowserLocation():
 def setResumeLocation():
     filename = filedialog.askopenfilename(filetypes=[("PDF", "*.pdf"), ("Word", "*.docx"), ("Word", "*.doc"), ("Text", "*.txt")])
     resume_location.set(filename)
-    uploadResume()
+    uploadResume(resume_location.get())
     print("Selected: ", filename)
 
 # Uploads a selected pdf file resume from the users PC
-def uploadResume():
+def uploadResume(resume):
     try:
         # Removes current files in the resume folder.
-        shutil.copy(resume_location.get(), os.getcwd() + "/uploadables/resume")
+        shutil.copy(resume, os.getcwd() + "/uploadables/resume")
         for field in fields:
             # Checks if the field is a labe
             if type(field) is Label:
@@ -51,7 +54,7 @@ def uploadResume():
                 resume_dir = os.listdir(resume_path)
                 # Updates the Label to indicate the successful new file upload
                 field.config(fg="green", text=resume_dir[0])
-
+    
     except Exception as e:
         print(e)
         mBox.showinfo("Error", "There was an issue uploading your resume")
@@ -65,28 +68,28 @@ i = 0
 # Goes through all the input values needed and adds them to the grid in a more dynamic matter
 for input in inputs:
     if input == "Browser":
-        e = tk.OptionMenu(root, browser_value, *OPTIONS)
+        e = tk.OptionMenu(main_ui, browser_value, *OPTIONS)
     elif input == "Select Location":
-        e = tk.Button(root, text="Select Browser Location", command=setBrowserLocation)
+        e = tk.Button(main_ui, text="Select Browser Location", command=setBrowserLocation)
     elif input == "Browser Location":
-        e = tk.Entry(root, textvariable=browser_location)
+        e = tk.Entry(main_ui, textvariable=browser_location)
     elif input == "Upload Resume":
-        e = tk.Button(root, text="Select Resume Location", command=setResumeLocation)
+        e = tk.Button(main_ui, text="Select Resume Location", command=setResumeLocation)
     elif input == "Uploaded Resume":
         resume_path = os.getcwd() + "/uploadables/resume"
         resume_dir = os.listdir(resume_path)
         if len(resume_dir) == 0:
-            e = tk.Label(root, text="No Resume Uploaded", fg="red")
+            e = tk.Label(main_ui, text="No Resume Uploaded", fg="red")
         else:
             resume = resume_dir[0]
-            e = tk.Label(root, text=resume, fg="green")
+            e = tk.Label(main_ui, text=resume, fg="green")
     else:
-        e = tk.Entry(root)    
+        e = tk.Entry(main_ui)    
 
     e.grid(row=i, column = 1)
     fields.append(e)
 
-    lb = tk.Label(root, text=input + ":")
+    lb = tk.Label(main_ui, text=input + ":")
     lb.grid(row=i, column=0)
     labels.append(lb)
     i += 1
@@ -110,6 +113,8 @@ def run_apply():
     elif result == 15:
         mBox.showinfo("Failure", "It appears there was an issue with opening your browser.")
 
-link_apply = tk.Button(root, text="Apply to link", command=run_apply)
+link_apply = tk.Button(main_ui, text="Apply to link", command=run_apply)
 link_apply.place(relx=0.6, rely=0.9, anchor=tk.CENTER)
-root.mainloop()
+
+
+main_ui.mainloop()
