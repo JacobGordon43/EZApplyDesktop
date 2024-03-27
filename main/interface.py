@@ -6,6 +6,7 @@ from tkinter import Label
 import os
 import shutil
 from pathlib import Path
+import sys
 # Setting up the UI of the main window
 main_ui = tk.Tk()
 main_ui.geometry("800x500")
@@ -42,7 +43,7 @@ def logout():
     except Exception as e:
         print(e)
     main_ui.destroy()
-    
+
 def setBrowserLocation():
     filename = filedialog.askopenfilename()
     browser_location.set(filename)
@@ -57,7 +58,16 @@ def setResumeLocation():
 # Uploads a selected pdf file resume from the users PC
 def uploadResume(resume):
     try:
-        # Removes current files in the resume folder.
+        # Locates the folder that contains the resume file
+        folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '../uploadables/resume'))
+        # Removes all files in the resume folder.
+        for file in os.listdir(folder):
+            path = os.path.join(folder, file)
+            try:
+                os.unlink(path)
+            except Exception as e:
+                print(e)
+        # copies the resume selected and places it into the resume folder
         shutil.copy(resume, os.getcwd() + "/uploadables/resume")
         for field in fields:
             # Checks if the field is a labe
@@ -70,6 +80,9 @@ def uploadResume(resume):
     except Exception as e:
         print(e)
         mBox.showinfo("Error", "There was an issue uploading your resume")
+
+def update():
+    print("Updating")
 
 # Setting up entry fields
 inputs = ["email", "password", "Job Title","Location", "Link", "Browser", "Select Location", "Browser Location", "Upload Resume", "Uploaded Resume"]
@@ -129,6 +142,6 @@ link_apply = tk.Button(main_ui, text="Apply to link", command=run_apply)
 link_apply.place(relx=0.6, rely=0.9, anchor=tk.CENTER)
 logout_btn = tk.Button(main_ui, text="Logout", command=logout)
 logout_btn.place(relx=0.5, rely=0.9, anchor=tk.CENTER)
-
-
+update_info_btn = tk.Button(main_ui, text="Update Information", command=update)
+update_info_btn.place(relx=.38, rely="0.9", anchor=tk.CENTER)
 main_ui.mainloop()

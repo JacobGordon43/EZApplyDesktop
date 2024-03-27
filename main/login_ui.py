@@ -4,23 +4,14 @@ import json
 import tkinter as tk
 from tkinter import Label
 import tkinter.messagebox as mBox
+import backend
 # import interface
-def login():
-    url = aws.login_url
-    headers = {"Content-Type": "application/json"}
-    params = {}
-    data = json.dumps({"email": username_entry.get(), "password": password_entry.get()})
-    print(data)
-    response = requests.post(url=url, headers=headers, data=data)
-    print(json.loads(response.text))
-    print(response.status_code)
-    if(response.status_code == 200):
-        data = json.loads(data)
-        with open("./json/login.json", 'w') as file: json.dump(data, file, indent=4)
-        with open("./json/create_account.json", 'w') as file: json.dump(data, file, indent=4)
-
-        import interface
+def login(username, password):
+    status_code = backend.login(username, password)
+    print(status_code)
+    if(status_code == 200):
         root.destroy()
+        import interface
 
 root = tk.Tk()
 root.geometry("800x500")
@@ -46,6 +37,6 @@ password_label.place(relx=.423, rely = .54)
 password_entry = tk.Entry(root, show="*")
 password_entry.place(relx=.5, rely=.6, anchor="center")
 
-login_btn = tk.Button(text="Login", command=login)
+login_btn = tk.Button(text="Login", command=lambda : login(username_entry.get(),password_entry.get()))
 login_btn.place(relx=.5, rely=.7, anchor="center", width=70, height=30)
 root.mainloop()
