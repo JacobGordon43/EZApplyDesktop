@@ -25,22 +25,18 @@ def login(username, password):
 def get_data():
     userId = actions.handle_file('./json/userId.json')
     print(userId["userId"])
-    # data = {            
-    #     "domainName": "EZApply Desktop",
-    #     "time": datetime.datetime.now(),
-    #     "body": {
-    #         "tableName": "personalFormData",
-    #         "expectsOne": True,
-    #         userId: userId
-    #     }
-    # }
+    data = {            
+        "domainName": "EZApply Desktop",
+        "time": datetime.datetime.now(),
+        "body": {
+            "tableName": "personalFormData",
+            "expectsOne": True,
+            "userId": userId["userId"]
+        }
+    }
     
     # Create new lambda function to handle this request
-    data = {
-        "body": json.dumps({
-            "message": "sent"
-        }, default=str)
-    }
+    # data = json.dumps({"userId": userId["userId"]}, default=str)
     print(data)
     # Adds additional key value pairs to send to the API
     url = aws.data_url
