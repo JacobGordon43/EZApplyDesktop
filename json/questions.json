@@ -2,7 +2,6 @@
     "about_us": {
         "keywords": ["Hear", "About"],
         "values": ["LinkedIn"],
-        "type": ["input"],
         "select" : false,
         "textarea": false,
         "checkbox" : false
@@ -10,7 +9,6 @@
     "first_name": {
         "keywords": ["First Name", "First name", "first name"],
         "values": ["Jacob"],
-        "type": ["input"],
         "select" : false,
         "textarea": false,
         "checkbox" : false
@@ -18,7 +16,6 @@
     "middle_name": {
         "keywords": ["Middle Name", "Middle name", "middle name"],
         "values": ["Paul"],
-        "type": ["input"],
         "select" : false,
         "textarea": false,
         "checkbox" : false
@@ -26,7 +23,6 @@
     "last_name": {
         "keywords": ["Last Name", "Last name", "last name"],
         "values": ["Gordon"],
-        "type": ["input"],
         "select" : false,
         "textarea": false,
         "checkbox" : false
@@ -34,7 +30,6 @@
     "address": {
         "keywords": ["Address Line 1", "Address line 1", "address line 1"],
         "values": ["1234 W. Example St."],
-        "type": ["input"],
         "select" : false,
         "textarea": false,
         "checkbox" : false
@@ -42,7 +37,6 @@
     "state": {
         "keywords": ["State", "state"],
         "values": ["Arizona"],
-        "type": ["select"],
         "select" : true,
         "textarea": false,
         "checkbox" : false
@@ -71,7 +65,6 @@
     "number": {
         "keywords": ["Phone Number", "Phone number"],
         "values": ["623-313-4313"],
-        "type": ["input"],
         "select" : false,
         "textarea": false,
         "checkbox" : false
@@ -79,7 +72,6 @@
     "previously_worked": {
         "keywords": ["previously worked for", "previously worked at" ],
         "values": ["No", "no"],
-        "type": ["check"],
         "select" : true,
         "textarea": false,
         "checkbox" : true
@@ -95,7 +87,6 @@
     "over_18": {
         "keywords": ["Are you age 18 or over", "Are you over 18", "18"],
         "values": "Yes",
-        "type": ["select"],
         "select" : true,
         "textarea": false,
         "checkbox" : true
@@ -103,7 +94,6 @@
     "relocate": {
         "keywords": ["relocate"],
         "values": ["Yes"],
-        "type": ["select"],
         "select" : true,
         "textarea": false,
         "checkbox" : true

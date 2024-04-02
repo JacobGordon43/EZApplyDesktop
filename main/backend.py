@@ -25,15 +25,15 @@ def login(username, password):
 def get_data():
     userId = actions.handle_file('./json/userId.json')
     print(userId["userId"])
-    data = {            
+    data = json.dumps({            
         "domainName": "EZApply Desktop",
         "time": datetime.datetime.now(),
-        "body": {
+        "body": json.dumps({
             "tableName": "personalFormData",
             "expectsOne": True,
             "userId": userId["userId"]
-        }
-    }
+        })
+    }, default=str)
     
     # Create new lambda function to handle this request
     # data = json.dumps({"userId": userId["userId"]}, default=str)
@@ -45,6 +45,11 @@ def get_data():
     # TODO create an additional file for determining how each call will handle it's data in formatting to the JSON format for this application
     # TODO create a separate function for each file. Specify which function is called based on the database.
     results = requests.post(url=url, data=data, headers=headers)
-    print(json.loads(results.text))
-    print(results.status_code)
+    questions = json.loads(results.text)
+    questions = questions['result']
+    print(questions['result'])
+    with open("./json/unformatted_questions.json", 'w') as file: json.dump(questions["result"], file, indent=4)
+    
+    # print(results.text)
+    # print(results.status_code)
 get_data()
