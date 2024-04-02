@@ -1,0 +1,72 @@
+{
+    "endDate": {
+        "values": "22/33",
+        "keywords": [
+            "From",
+            "End date",
+            "end date",
+            "End Date"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "GPA": {
+        "values": "3",
+        "keywords": [
+            "GPA"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "degree": {
+        "values": "",
+        "keywords": [
+            "Degree",
+            "degree"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "schoolName": {
+        "values": "GCU",
+        "keywords": [
+            "School",
+            "University"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "startDate": {
+        "values": "06/32",
+        "keywords": [
+            "Start Date",
+            "Start date",
+            "To",
+            "to",
+            "start date"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "field": {
+        "values": "C.S",
+        "keywords": [
+            "Field of Study",
+            "Field",
+            "Study"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "School1": {
+        "key": {
+            "values": "a9eca9d7-9ab3-4218-a4a6-6f62e003f1bd"
+        }
+    }
+}

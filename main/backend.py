@@ -24,32 +24,44 @@ def login(username, password):
 # login("jacobg1@cox.net", "Password43!")
 def get_data():
     userId = actions.handle_file('./json/userId.json')
-    print(userId["userId"])
-    data = json.dumps({            
-        "domainName": "EZApply Desktop",
-        "time": datetime.datetime.now(),
-        "body": json.dumps({
-            "tableName": "personalFormData",
-            "expectsOne": True,
-            "userId": userId["userId"]
-        })
-    }, default=str)
-    
-    # Create new lambda function to handle this request
-    # data = json.dumps({"userId": userId["userId"]}, default=str)
-    print(data)
-    # Adds additional key value pairs to send to the API
     url = aws.data_url
     headers = {"Content-Type": "application/json"}
-    # TODO create a separate call for each table, add a key value in data for that table
-    # TODO create an additional file for determining how each call will handle it's data in formatting to the JSON format for this application
-    # TODO create a separate function for each file. Specify which function is called based on the database.
-    results = requests.post(url=url, data=data, headers=headers)
+
+
+    print(userId["userId"])
+    # personal_data = json.dumps({            
+    #     "domainName": "EZApply Desktop",
+    #     "time": datetime.datetime.now(),
+    #     "body": json.dumps({
+    #         "tableName": "personalFormData",
+    #         "expectsOne": True,
+    #         "userId": userId["userId"]
+    #     })
+    # }, default=str)
+    
+
+    # print(personal_data)
+   
+    # results = requests.post(url=url, data=personal_data, headers=headers)
+    # questions = json.loads(results.text)
+    # questions = questions['result']
+    # print(questions['result'])
+    # with open("./json/unformatted_questions.json", 'w') as file: json.dump(questions["result"], file, indent=4)
+    
+    education_data = json.dumps({            
+    "domainName": "EZApply Desktop",
+    "time": datetime.datetime.now(),
+    "body": json.dumps({
+        "tableName": "educationFormData",
+        "expectsOne": False,
+        "userId": userId["userId"]
+    })
+}, default=str)
+    print(education_data)
+    results = requests.post(url=url, data=education_data, headers=headers)
     questions = json.loads(results.text)
     questions = questions['result']
-    print(questions['result'])
-    with open("./json/unformatted_questions.json", 'w') as file: json.dump(questions["result"], file, indent=4)
-    
-    # print(results.text)
-    # print(results.status_code)
+    print(questions)
+    with open("./json/unformatted_education.json", 'w') as file: json.dump(questions, file, indent=4)
+
 get_data()
