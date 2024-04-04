@@ -44,6 +44,35 @@ def format_questions():
             json_entry["textarea"] = False 
             json_entry["checkbox"] = False 
         json_arr[question] = json_entry
+
+        questions = actions.handle_file('./json/unformatted_disclosure.json')
+
+        for question, value in questions.items():
+            json_entry = {
+                "values": value
+            }
+            if question == "ethnicity":
+                json_entry["keywords"] = ["ethnicity"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False 
+            elif question == "sex":
+                json_entry["keywords"] = ["sex", "gender"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False 
+            elif question == "veteran":
+                json_entry["keywords"] = ["veteran"]
+                json_entry["select"] = True 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False 
+            elif question == "disability":
+                json_entry["keywords"] = ["disability"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = True 
+            json_arr[question] = json_entry
+
     with open("./json/tempfile.json", "w") as file: json.dump(json_arr, file, indent=4)
     print(json_arr)
 
@@ -58,7 +87,7 @@ def format_education():
         json_arr[school_key] = {
         } 
         for question, value in school.items():
-    
+            
             print(question)
             json_entry = {
                 "values": value
@@ -95,10 +124,11 @@ def format_education():
                 json_entry["checkbox"] = False
             else:
                 continue
-            json_arr[school_key] = json_entry
+            json_arr[school_key][question] = json_entry
 
         
 
     with open("./json/education_tempfile.json", "w") as file: json.dump(json_arr, file, indent=4)
     print(json_arr)
-format_education()
+# format_education()
+format_questions()

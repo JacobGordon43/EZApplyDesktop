@@ -30,7 +30,6 @@
                 "Study"
             ],
             "values": [
-                "Software Development",
                 "Computer Science"
             ],
             "select" : false,
@@ -45,76 +44,6 @@
             "select" : false,
             "textarea": false,
             "checkbox" : false
-        },
-        "from": {
-            "keyword": [
-                "From"
-            ],
-            "values": [
-                "2020"
-            ],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false        
-        },
-        "to": {
-            "keyword": [
-                "To"
-            ],
-            "values": [
-                "2024"
-            ],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false        
-        }
-    },
-    "asu": {
-        "school": {
-            "keyword": [
-                "School",
-                "University"
-            ],
-            "values": [
-                "Arizona State University"
-            ],
-            "select" : true,
-            "textarea": false,
-            "checkbox" : false        
-        },
-        "degree": {
-            "keyword": [
-                "Degree"
-            ],
-            "values": [
-                "BACHELOR - IN PROGRESS"
-            ],
-            "select" : true,
-            "textarea": false,
-            "checkbox" : false         
-        },
-        "study": {
-            "keyword": [
-                "Field of Study",
-                "Field",
-                "Study"
-            ],
-            "values": [
-                "Software Development",
-                "Computer Science"
-            ],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false        
-        },
-        "gpa": {
-            "keyword": [
-                "GPA"
-            ],
-            "values": ["3.75"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false        
         },
         "from": {
             "keyword": [

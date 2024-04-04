@@ -27,6 +27,7 @@ browser_location = tk.StringVar(main_ui)
 browser_location.set("C:\Program Files\Google\Chrome\Application")
 
 resume_location = tk.StringVar(main_ui)
+cover_letter_location = tk.StringVar(main_ui)
 
 menu = tk.OptionMenu(main_ui, browser_value, *OPTIONS)
 # Logouts the user by deleting the necessary files and closing the window
@@ -55,6 +56,12 @@ def setResumeLocation():
     uploadResume(resume_location.get())
     print("Selected: ", filename)
 
+def setCoverLetterLocation():
+    filename = filedialog.askopenfilename(filetypes=[("PDF", "*.pdf"), ("Word", "*.docx"), ("Word", "*.doc"), ("Text", "*.txt")])
+    cover_letter_location.set(filename)
+    uploadCoverLetter(cover_letter_location.get())
+    print("Selected: ", filename)
+
 # Uploads a selected pdf file resume from the users PC
 def uploadResume(resume):
     try:
@@ -81,11 +88,36 @@ def uploadResume(resume):
         print(e)
         mBox.showinfo("Error", "There was an issue uploading your resume")
 
+def uploadCoverLetter(resume):
+    try:
+        # Locates the folder that contains the resume file
+        folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '../uploadables/cover_letter'))
+        # Removes all files in the resume folder.
+        for file in os.listdir(folder):
+            path = os.path.join(folder, file)
+            try: 
+                os.unlink(path)
+            except Exception as e:
+                print(e)
+        # copies the resume selected and places it into the resume folder
+        shutil.copy(resume, os.getcwd() + "/uploadables/cover_letter")
+        for field in fields:
+            # Checks if the field is a label
+            if type(field) is Label and str(field) == ".!label9":
+                letter_path = os.getcwd() + "/uploadables/cover_letter"
+                letter_dir = os.listdir(letter_path)
+                # Updates the Label to indicate the successful new file upload
+                field.config(fg="green", text=letter_dir[0])
+    
+    except Exception as e:
+        print(e)
+        mBox.showinfo("Error", "There was an issue uploading your resume")
+
 def update():
     print("Updating")
 
 # Setting up entry fields
-inputs = ["email", "password", "Job Title","Location", "Link", "Browser", "Select Location", "Browser Location", "Upload Resume", "Uploaded Resume"]
+inputs = ["Link", "Browser", "Select Location", "Browser Location", "Upload Resume", "Uploaded Resume", "Upload Cover Letter", "Uploaded Cover Letter"]
 fields = []
 labels = []
 
@@ -100,6 +132,8 @@ for input in inputs:
         e = tk.Entry(main_ui, textvariable=browser_location)
     elif input == "Upload Resume":
         e = tk.Button(main_ui, text="Select Resume Location", command=setResumeLocation)
+    elif input == "Upload Cover Letter":
+        e = tk.Button(main_ui, text="Select Cover Letter Location", command=setCoverLetterLocation)
     elif input == "Uploaded Resume":
         resume_path = os.getcwd() + "/uploadables/resume"
         resume_dir = os.listdir(resume_path)
@@ -108,6 +142,14 @@ for input in inputs:
         else:
             resume = resume_dir[0]
             e = tk.Label(main_ui, text=resume, fg="green")
+    elif input == "Uploaded Cover Letter":
+        letter_path = os.getcwd() + "/uploadables/cover_letter"
+        letter_dir = os.listdir(letter_path)
+        if len(letter_dir) == 0:
+            e = tk.Label(main_ui, text="No Cover Letter Uploaded", fg="red")
+        else:
+            letter = letter_dir[0]
+            e = tk.Label(main_ui, text=letter, fg="green")
     else:
         e = tk.Entry(main_ui)    
 
@@ -126,7 +168,7 @@ fields.append(menu)
 # # A function that runs the selenium script
 def run_apply():
     print("Attempting to apply")
-    result = main_app.apply(fields[4].get(), browser_value.get(), fields[7].get(), ["user", "pass"],)
+    result = main_app.apply(fields[0].get(), browser_value.get())
     if result == 1:
         mBox.showinfo("Success", "It appears that your application was successfully submitted!")
     elif result == 3:

@@ -12,8 +12,8 @@ import actions as AC
 import login
 import math
 
-def apply(link, browser, path, login_info):
-    driver = AC.handle_browser(browser, path)
+def apply(link, browser):
+    driver = AC.handle_browser(browser)
     
     if driver == 15:
         return driver

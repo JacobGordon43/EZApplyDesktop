@@ -1,29 +1,117 @@
 {
-    "endDate": {
-        "values": "22/33"
+    "phoneNumber": {
+        "values": "4802500084",
+        "keywords": [
+            "Phone Number",
+            "Phone number",
+            "Mobile Number",
+            "Mobile number",
+            "mobile number"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "race": {
+        "values": "White"
+    },
+    "disability": {
+        "values": "No disability",
+        "keywords": [
+            "disability"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": true
     },
     "userId": {
         "values": "442d1f96-6561-4e1c-a533-5871c3c79a2e"
     },
-    "GPA": {
-        "values": "3"
-    },
     "formId": {
-        "values": "fc0f902d-d6fb-4e3f-8b06-ce667f5669eb"
+        "values": "79ec2cbc-fe4f-44ce-8284-751ea92237f3"
     },
-    "degree": {
-        "values": ""
+    "sex": {
+        "values": "Male",
+        "keywords": [
+            "sex",
+            "gender"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
     },
-    "schoolName": {
-        "values": "GCU"
+    "ethnicity": {
+        "values": "Not Hispanic",
+        "keywords": [
+            "ethnicity"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
     },
-    "startDate": {
-        "values": "06/32"
+    "veteranStatus": {
+        "values": "No"
     },
-    "field": {
-        "values": "C.S"
+    "zipcode": {
+        "values": "85304",
+        "keywords": [
+            "Postal Code",
+            "Postal code",
+            "Zipcode",
+            "Zip Code",
+            "zipcode"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
     },
-    "key": {
-        "values": "a9eca9d7-9ab3-4218-a4a6-6f62e003f1bd"
+    "county": {
+        "values": "United States"
+    },
+    "lastName": {
+        "values": "Gordon",
+        "keywords": [
+            "Last Name",
+            "Last name",
+            "last name"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "address": {
+        "values": "4435 W. Sweetwater Ave",
+        "keywords": [
+            "Address Line 1",
+            "Address line 1",
+            "address line 1"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "phoneNumberType": {
+        "values": "Mobile"
+    },
+    "firstName": {
+        "values": "Jacob",
+        "keywords": [
+            "First Name",
+            "First name",
+            "first name"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "state": {
+        "values": "AZ",
+        "keywords": [
+            "State",
+            "state"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
     }
 }

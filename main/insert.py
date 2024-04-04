@@ -16,7 +16,7 @@ def enter_login_info(driver, values):
     # TODO change element to elements and loops through each element, inputting the information
     for key in values.keys():
         try: 
-            inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + key + "')]//following::input[1]")    
+            inputs = driver.find_elements(By.XPATH, "//label[contains(text(), '" + key.capitalize() + "')]//following::input[1]")    
             for input in inputs:
                 input.clear()
                 input.send_keys(values[key])
@@ -211,29 +211,40 @@ def add_education(driver):
 # Handles work forms to add all work history
 def add_work(driver):
     work = driver.find_elements(By.XPATH, "//*[contains(text(), 'Work')]")
+    for w in work:
+        found = w.is_displayed()
+        if found:
+            break
     # Checks if work is on the page
-    if len(work) > 0:
-        work = actions.handle_file('./json/work.json')
-        process_history(driver, work, "Work")
+    if found != False:    
+        if len(work) > 0:
+            work = actions.handle_file('./json/work.json')
+            process_history(driver, work, "Work")
 
 def add_skills(driver):
     skills = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]")
+    found = False
+    for skill in skills:
+        found = skill.is_displayed()
+        if found:
+            break
     # Checks if work is on the page
-    if len(skills) > 0:
-        skills = actions.handle_file('./json/skills.json')
-        print(skills['skills']['values'])
-        for skill in skills['skills']["values"]:
-            inputs = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]//following::input[1]")
-            handle_input(driver, inputs, "Skills", skill)
-            print(skill)
+    if found != False:
+        if len(skills) > 0:
+            skills = actions.handle_file('./json/skills.json')
+            print(skills['skills']['values'])
+            for skill in skills['skills']["values"]:
+                inputs = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]//following::input[1]")
+                handle_input(driver, inputs, "Skills", skill)
+                print(skill)
 
 def fill_out_application(driver, questions):
     # Checks each before attempting to fill out the rest of the page
     add_skills(driver)
-    add_work(driver)
-    add_education(driver)
-    actions.upload_resume(driver)
-
+    # add_work(driver)
+    # add_education(driver)
+    # actions.upload_resume(driver)
+    # actions.upload_cover_letter(driver)
 
 # Handles the majority of the logic
     try:

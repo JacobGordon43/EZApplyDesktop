@@ -29,39 +29,54 @@ def get_data():
 
 
     print(userId["userId"])
-    # personal_data = json.dumps({            
-    #     "domainName": "EZApply Desktop",
-    #     "time": datetime.datetime.now(),
-    #     "body": json.dumps({
-    #         "tableName": "personalFormData",
-    #         "expectsOne": True,
-    #         "userId": userId["userId"]
-    #     })
-    # }, default=str)
+    personal_data = json.dumps({            
+        "domainName": "EZApply Desktop",
+        "time": datetime.datetime.now(),
+        "body": json.dumps({
+            "tableName": "personalFormData",
+            "expectsOne": True,
+            "userId": userId["userId"]
+        })
+    }, default=str)
     
 
-    # print(personal_data)
+    print(personal_data)
    
-    # results = requests.post(url=url, data=personal_data, headers=headers)
-    # questions = json.loads(results.text)
-    # questions = questions['result']
-    # print(questions['result'])
-    # with open("./json/unformatted_questions.json", 'w') as file: json.dump(questions["result"], file, indent=4)
+    results = requests.post(url=url, data=personal_data, headers=headers)
+    questions = json.loads(results.text)
+    questions = questions['result']
+    print(questions)
+    with open("./json/unformatted_questions.json", 'w') as file: json.dump(questions, file, indent=4)
     
-    education_data = json.dumps({            
+#     education_data = json.dumps({            
+#     "domainName": "EZApply Desktop",
+#     "time": datetime.datetime.now(),
+#     "body": json.dumps({
+#         "tableName": "educationFormData",
+#         "expectsOne": False,
+#         "userId": userId["userId"]
+#     })
+# }, default=str)
+#     print(education_data)
+#     results = requests.post(url=url, data=education_data, headers=headers)
+#     questions = json.loads(results.text)
+#     questions = questions['result']
+#     print(questions)
+#     with open("./json/unformatted_education.json", 'w') as file: json.dump(questions, file, indent=4)
+
+    disclosure_data = json.dumps({            
     "domainName": "EZApply Desktop",
     "time": datetime.datetime.now(),
     "body": json.dumps({
-        "tableName": "educationFormData",
+        "tableName": "nonDisclosureFormData",
         "expectsOne": False,
         "userId": userId["userId"]
     })
 }, default=str)
-    print(education_data)
-    results = requests.post(url=url, data=education_data, headers=headers)
+    print(disclosure_data)
+    results = requests.post(url=url, data=disclosure_data, headers=headers)
     questions = json.loads(results.text)
     questions = questions['result']
-    print(questions)
-    with open("./json/unformatted_education.json", 'w') as file: json.dump(questions, file, indent=4)
-
+    print(questions[0])
+    with open("./json/unformatted_disclosure.json", 'w') as file: json.dump(questions[0], file, indent=4)
 get_data()
