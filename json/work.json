@@ -53,6 +53,50 @@
     "job_2": {
         "title": {
             "keyword": ["Job Title", "Title"],
+            "values": ["Software Engineer Intern"],
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
+        },
+        "company": {
+            "keyword": ["Company"],
+            "values": ["OpenPark"],
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
+        },
+        "location": {
+            "keyword": ["Location"],
+            "values": ["Remote"],
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
+        },
+        "from": {
+            "keyword": ["From"],
+            "values": ["092023"],
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
+        },
+        "to": {
+            "keyword": ["To"],
+            "values": ["112023"],
+            "select" : false,
+            "textarea": false,
+            "checkbox" : false
+        },
+        "description": {
+            "keyword": ["Description"],
+            "values": ["I worked on a Chat-GPT oriented application for pet owners. I enhanced the UI and ensured that it was consistently mobile friendly, added a credit system, and consistently communicated with the CEO to understand what he wanted and receive feedback on what I was implementing. I also created a purchase page for credits and implemented Stripe's API for the checkout process."],
+            "select" : false,
+            "textarea": true,
+            "checkbox" : false
+        }
+    },
+    "job_3": {
+        "title": {
+            "keyword": ["Job Title", "Title"],
             "values": ["Warehouse Associate"],
             "select" : false,
             "textarea": false,
@@ -89,50 +133,6 @@
         "description": {
             "keyword": ["Description"],
             "values": ["At Amazon, I have performed various tasks, ranging from meeting a personal rate to working in a team environment to ensure that the other parts of the process had work. I have worked as a returns processor, picker, and stower. I’ve also worked as a dock worker, cart runner, and tote team member, all of which I communicated consistently with upper management and other team members who I worked with to ensure a smooth and efficient process."],
-            "select" : false,
-            "textarea": true,
-            "checkbox" : false
-        }
-    },
-    "job_3": {
-        "title": {
-            "keyword": ["Job Title", "Title"],
-            "values": ["Software Engineer Intern"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false
-        },
-        "company": {
-            "keyword": ["Company"],
-            "values": ["OpenPark"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false
-        },
-        "location": {
-            "keyword": ["Location"],
-            "values": ["Remote"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false
-        },
-        "from": {
-            "keyword": ["From"],
-            "values": ["092023"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false
-        },
-        "to": {
-            "keyword": ["From"],
-            "values": ["112023"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false
-        },
-        "description": {
-            "keyword": ["Description"],
-            "values": ["I worked on a Chat-GPT oriented application for pet owners. I enhanced the UI and ensured that it was consistently mobile friendly, added a credit system, and consistently communicated with the CEO to understand what he wanted and receive feedback on what I was implementing. I also created a purchase page for credits and implemented Stripe's API for the checkout process."],
             "select" : false,
             "textarea": true,
             "checkbox" : false

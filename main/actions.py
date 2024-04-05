@@ -66,6 +66,7 @@ def click_btn(driver, text_arr):
 # Enters the path to the resume file 
 def upload_resume(driver):
     file_input = driver.find_elements(By.XPATH, "//*[contains(text(), 'Resume')]//following::*[@type='file']")
+
     if len(file_input) > 0:
         resume_path = os.getcwd() + "/uploadables/resume"
         resume_dir = os.listdir(resume_path)
@@ -78,6 +79,7 @@ def upload_resume(driver):
 def upload_cover_letter(driver):
     file_input = driver.find_elements(By.XPATH, "//*[contains(text(), 'Cover')]//following::*[@type='file']")
     if len(file_input) > 0:
+
         cover_letter_path = os.getcwd() + "/uploadables/cover_letter"
         letter_dir = os.listdir(cover_letter_path)
         if len(letter_dir) == 0:

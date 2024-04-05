@@ -203,23 +203,34 @@ def process_history(driver, experiences, category):
 # Handles education forms to add all education history
 def add_education(driver):
     education = driver.find_elements(By.XPATH, "//*[contains(text(), 'Education')]")
-    # Checks if education is on the page
-    if len(education) > 0:
+    found = False
+    for e in education:
+        found = e.is_displayed()
+        if found:
+            break
+    # Checks if work is on the page
+    if found:        
         education = actions.handle_file('./json/education.json')
-
         process_history(driver, education, "Education")
+        return True
+    return False
 # Handles work forms to add all work history
 def add_work(driver):
     work = driver.find_elements(By.XPATH, "//*[contains(text(), 'Work')]")
+    found = False
     for w in work:
+        print(w.text)
+        if "Workday" in w.text:
+            break
         found = w.is_displayed()
         if found:
             break
     # Checks if work is on the page
-    if found != False:    
-        if len(work) > 0:
-            work = actions.handle_file('./json/work.json')
-            process_history(driver, work, "Work")
+    if found:    
+        work = actions.handle_file('./json/work.json')
+        process_history(driver, work, "Work")
+        return True
+    return False
 
 def add_skills(driver):
     skills = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]")
@@ -229,25 +240,51 @@ def add_skills(driver):
         if found:
             break
     # Checks if work is on the page
-    if found != False:
-        if len(skills) > 0:
-            skills = actions.handle_file('./json/skills.json')
-            print(skills['skills']['values'])
-            for skill in skills['skills']["values"]:
-                inputs = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]//following::input[1]")
-                handle_input(driver, inputs, "Skills", skill)
-                print(skill)
+    if found:
+        skills = actions.handle_file('./json/skills.json')
+        print(skills['skills']['values'])
+        for skill in skills['skills']["values"]:
+            inputs = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]//following::input[1]")
+            handle_input(driver, inputs, "Skills", skill)
+            return True
+    return False
 
-def fill_out_application(driver, questions):
-    # Checks each before attempting to fill out the rest of the page
-    add_skills(driver)
-    # add_work(driver)
-    # add_education(driver)
-    # actions.upload_resume(driver)
-    # actions.upload_cover_letter(driver)
+def is_review(driver):
+    review = driver.find_elements(By.XPATH, "//*[contains(text(), 'Review')]")
+    found = False
+    for r in review:
+        found = r.is_displayed()
+        if found:
+            break
+    return found
 
+def fill_out_application(driver, questions, education_done, skills_done, work_done):
 # Handles the majority of the logic
     try:
+        # review_page = is_review(driver)
+        # if not review_page:
+            # Checks each before attempting to fill out the rest of the page
+        try:
+            if not skills_done:
+                skills_done = add_skills(driver)
+        except Exception as e:
+            print(e)
+        
+        try:
+            if not work_done:
+                work_done = add_work(driver)
+        except Exception as e:
+            print(e)
+        
+        try:
+            if not education_done:
+                education_done = add_education(driver)
+        except Exception as e:
+            print(e)
+
+       
+        actions.upload_resume(driver)
+        actions.upload_cover_letter(driver)
         counter = 0
         # print("There are ", inputCount, " input fields in this page")
         print(questions)
@@ -256,8 +293,8 @@ def fill_out_application(driver, questions):
         # Finds all the current labels on the page
         labels = driver.find_elements(By.TAG_NAME, "label")
 
-        # Now that all questions have been looped through, it will now attempt to submit
-        actions.click_btn(driver, ["Continue", "Apply", "Complete", "Finish", "Submit"])
+        # # Now that all questions have been looped through, it will now attempt to submit
+        # actions.click_btn(driver, ["Continue", "Apply", "Complete", "Finish", "Submit"])
         new_labels = driver.find_elements(By.TAG_NAME, "label")
         
         #The program will continuously check if the labels are the same on the page and sleep for a second until it changes
@@ -267,8 +304,11 @@ def fill_out_application(driver, questions):
             print("Waiting for the user to continue the application")
             time.sleep(1)
         
-        completed = driver.find_elements(By.XPATH, "//*[contains(text(), 'completed')]")
-        if len(completed) > 0:
+        completed_keywords = driver.find_elements(By.XPATH, "//*[contains(text(), 'completed')] | //*[contains(text(), 'Congratulations')]")
+        if len(completed_keywords) > 0:
+            for element in completed_keywords:
+                if element.is_displayed():
+                    break
             return 0
         # TODO create a conditional that will determine if the application has been submitted and returns 1
         # it will then be return 1 through each iteration of the process, unless there is an error, in which that value will be returned
@@ -277,5 +317,17 @@ def fill_out_application(driver, questions):
         print(e)
         return 3
     except Exception as e:
+        labels = driver.find_elements(By.TAG_NAME, "label")
+
+        # # Now that all questions have been looped through, it will now attempt to submit
+        # actions.click_btn(driver, ["Continue", "Apply", "Complete", "Finish", "Submit"])
+        new_labels = driver.find_elements(By.TAG_NAME, "label")
+        
+        #The program will continuously check if the labels are the same on the page and sleep for a second until it changes
+        # When it changes, it will indicate the application has moved forward
+        while labels == new_labels:
+            new_labels = driver.find_elements(By.TAG_NAME, "label")
+            print("Waiting for the user to continue the application")
+            time.sleep(1)
         print(e)
         return 4

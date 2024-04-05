@@ -39,7 +39,7 @@ def apply(link, browser):
     # except:
     #     return 15
     
-    driver.get("https://earlywarning.wd5.myworkdayjobs.com/earlywarningcareers/job/Intern---DevOps-Software-Engineering--Summer-2024-_REQ2024173?utm_source=ziprecruiter")
+    driver.get("https://earlywarning.wd5.myworkdayjobs.com/en-US/earlywarningcareers/job/Intern---DevOps-Software-Engineering--Summer-2024-_REQ2024243?utm_source=ziprecruiter")
 
     found_application = False
     completed = 0
@@ -53,7 +53,7 @@ def apply(link, browser):
     
     questions = AC.handle_file("./json/questions.json")
     while completed == 0:
-        results = insert.fill_out_application(driver, questions)
+        results = insert.fill_out_application(driver, questions, False, False, False)
         # If results is non a number then it should be an array of JSON that will be the updated questions. This helps in optimization and fixing potential issues. i.e 'city' identifiying with 'ethnicity'
         # If it is a number, then it is the value that should be returned to the UI to inform the user of completion or error.
         if math.isnan(results):

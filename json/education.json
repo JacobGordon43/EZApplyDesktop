@@ -19,7 +19,7 @@
             "values": [
                 "BACHELOR - IN PROGRESS"
             ],
-            "select" : false,
+            "select" : true,
             "textarea": false,
             "checkbox" : false        
         },

@@ -100,7 +100,7 @@
     },
     "veteran": {
         "keywords": ["veteran"],
-        "values": ["No"],
+        "values": ["I am not a Veteran"],
         "select" : true,
         "textarea": false,
         "checkbox" : false
@@ -114,6 +114,13 @@
     },
     "felony":{
         "keywords": ["felony"],
+        "values": ["No"],
+        "select": true,
+        "textarea": false,
+        "checkbox": false
+    },
+    "hispanic": {
+        "keywords": ["Hispanic or Latino"],
         "values": ["No"],
         "select": true,
         "textarea": false,
