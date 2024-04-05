@@ -64,19 +64,43 @@ def get_data():
 #     print(questions)
 #     with open("./json/unformatted_education.json", 'w') as file: json.dump(questions, file, indent=4)
 
-    disclosure_data = json.dumps({            
+#     disclosure_data = json.dumps({            
+#     "domainName": "EZApply Desktop",
+#     "time": datetime.datetime.now(),
+#     "body": json.dumps({
+#         "tableName": "nonDisclosureFormData",
+#         "expectsOne": False,
+#         "userId": userId["userId"]
+#     })
+# }, default=str)
+#     print(disclosure_data)
+#     results = requests.post(url=url, data=disclosure_data, headers=headers)
+#     questions = json.loads(results.text)
+#     questions = questions['result']
+#     print(questions[0])
+#     with open("./json/unformatted_disclosure.json", 'w') as file: json.dump(questions[0], file, indent=4)
+
+    skills_data =  json.dumps({            
     "domainName": "EZApply Desktop",
     "time": datetime.datetime.now(),
     "body": json.dumps({
-        "tableName": "nonDisclosureFormData",
+        "tableName": "skillsFormData",
         "expectsOne": False,
         "userId": userId["userId"]
     })
 }, default=str)
-    print(disclosure_data)
-    results = requests.post(url=url, data=disclosure_data, headers=headers)
+    print(skills_data)
+    results = requests.post(url=url, data=skills_data, headers=headers)
     questions = json.loads(results.text)
     questions = questions['result']
-    print(questions[0])
-    with open("./json/unformatted_disclosure.json", 'w') as file: json.dump(questions[0], file, indent=4)
+    skills = questions[0]['skills']
+    skills_arr = []
+    for value in skills:
+        skills_arr.append(value['skill'])
+    skills_data = {}
+    skills_data["skills"] = {}
+    skills_data["skills"]["keywords"] = ["Skills"]
+    skills_data["skills"]["values"] = skills_arr
+    
+    with open("./json/unformatted_skills.json", 'w') as file: json.dump(questions[0], file, indent=4)
 get_data()
