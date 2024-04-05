@@ -73,11 +73,11 @@ def format_questions():
                 json_entry["checkbox"] = True 
             json_arr[question] = json_entry
 
-    with open("./json/tempfile.json", "w") as file: json.dump(json_arr, file, indent=4)
+    with open("./json/questions.json", "w") as file: json.dump(json_arr, file, indent=4)
     print(json_arr)
 
 def format_education():
-    schools = actions.handle_file('./json/unformatted_education.json')
+    schools = actions.handle_file('./json/education.json')
     count = 0
     json_arr = {}
     for school in schools:
@@ -141,6 +141,5 @@ def format_skills():
     skills_data["skills"] = {}
     skills_data["skills"]["keywords"] = ["Skills"]
     skills_data["skills"]["values"] = skills_arr
-    with open("./json/skills_tempfile.json", "w") as file: json.dump(skills_data, file, indent=4)
+    with open("./json/skills.json", "w") as file: json.dump(skills_data, file, indent=4)
 
-format_skills()
