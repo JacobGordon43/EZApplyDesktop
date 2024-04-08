@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "22/33",
+        "endDate": "33/33",
         "userId": "442d1f96-6561-4e1c-a533-5871c3c79a2e",
-        "GPA": "3",
-        "formId": "fc0f902d-d6fb-4e3f-8b06-ce667f5669eb",
-        "degree": "",
+        "GPA": "3.3",
+        "formId": "4932007f-d550-4659-a854-dc64c964d62e",
+        "degree": "Bachelor",
         "schoolName": "GCU",
-        "startDate": "06/32",
-        "field": "C.S",
-        "key": "a9eca9d7-9ab3-4218-a4a6-6f62e003f1bd"
+        "startDate": "03/33",
+        "field": "C.S.",
+        "key": "17c799c8-f325-4001-9f56-ca2375de17d5"
     }
 ]

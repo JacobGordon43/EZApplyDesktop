@@ -208,7 +208,7 @@ def add_education(driver):
         found = e.is_displayed()
         if found:
             break
-    # Checks if work is on the page
+    # Checks if work iKs on the page
     if found:        
         education = actions.handle_file('./json/education.json')
         process_history(driver, education, "Education")
@@ -325,9 +325,9 @@ def fill_out_application(driver, questions, education_done, skills_done, work_do
         
         #The program will continuously check if the labels are the same on the page and sleep for a second until it changes
         # When it changes, it will indicate the application has moved forward
-        while labels == new_labels:
-            new_labels = driver.find_elements(By.TAG_NAME, "label")
-            print("Waiting for the user to continue the application")
-            time.sleep(1)
+        # while labels == new_labels:
+        #     new_labels = driver.find_elements(By.TAG_NAME, "label")
+        #     print("Waiting for the user to continue the application")
+        #     time.sleep(1)
         print(e)
         return 4

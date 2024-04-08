@@ -1,58 +1,32 @@
 {
-    "School1": {
-        "endDate": {
+    "Work1": {
+        "location": {
             "values": [
-                "33/33"
+                "Phoenix, Arizona"
             ],
             "keywords": [
-                "To",
-                "to",
-                "End date",
-                "end date",
-                "End Date"
+                "Location",
+                "location"
             ],
             "select": false,
             "textarea": false,
             "checkbox": false
         },
-        "GPA": {
+        "company": {
             "values": [
-                "3.3"
+                "Shangri-La"
             ],
             "keywords": [
-                "GPA"
+                "Company",
+                "company"
             ],
             "select": false,
             "textarea": false,
             "checkbox": false
         },
-        "degree": {
+        "from": {
             "values": [
-                "Bachelor"
-            ],
-            "keywords": [
-                "Degree",
-                "degree"
-            ],
-            "select": false,
-            "textarea": false,
-            "checkbox": false
-        },
-        "schoolName": {
-            "values": [
-                "GCU"
-            ],
-            "keywords": [
-                "School",
-                "University"
-            ],
-            "select": false,
-            "textarea": false,
-            "checkbox": false
-        },
-        "startDate": {
-            "values": [
-                "03/33"
+                "06/2017"
             ],
             "keywords": [
                 "Start Date",
@@ -65,14 +39,40 @@
             "textarea": false,
             "checkbox": false
         },
-        "field": {
+        "description": {
             "values": [
-                "C.S."
+                "I cleaned"
             ],
             "keywords": [
-                "Field of Study",
-                "Field",
-                "Study"
+                "Description",
+                "description"
+            ],
+            "select": false,
+            "textarea": false,
+            "checkbox": false
+        },
+        "to": {
+            "values": [
+                "06/2018"
+            ],
+            "keywords": [
+                "To",
+                "to",
+                "End date",
+                "end date",
+                "End Date"
+            ],
+            "select": false,
+            "textarea": false,
+            "checkbox": false
+        },
+        "workTitle": {
+            "values": [
+                "Buy Boy"
+            ],
+            "keywords": [
+                "Title",
+                "title"
             ],
             "select": false,
             "textarea": false,

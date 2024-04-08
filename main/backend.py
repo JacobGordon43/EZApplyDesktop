@@ -111,4 +111,23 @@ def get_data():
     with open("./json/unformatted_education.json", 'w') as file: json.dump(questions, file, indent=4)
     # Formats the education file
     FQ.format_education()
+
+    work_data = json.dumps({            
+    "domainName": "EZApply Desktop",
+    "time": datetime.datetime.now(),
+    "body": json.dumps({
+        "tableName": "workFormData",
+        "expectsOne": False,
+        "userId": userId["userId"]
+    })
+}, default=str)
+    print(work_data)
+    # Sends the request
+    results = requests.post(url=url, data=work_data, headers=headers)
+    questions = json.loads(results.text)
+    questions = questions['result']
+    # Sends the result to a file
+    with open("./json/unformatted_work.json", 'w') as file: json.dump(questions, file, indent=4)
+    # Formats the work file
+    FQ.format_work()
 get_data()

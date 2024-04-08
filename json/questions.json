@@ -1,157 +1,143 @@
 {
-    "about_us": {
-        "keywords": ["Hear", "About"],
-        "values": ["LinkedIn"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    }, 
-    "first_name": {
-        "keywords": ["First Name", "First name", "first name"],
-        "values": ["Jacob"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "middle_name": {
-        "keywords": ["Middle Name", "Middle name", "middle name"],
-        "values": ["Paul"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "last_name": {
-        "keywords": ["Last Name", "Last name", "last name"],
-        "values": ["Gordon"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "address": {
-        "keywords": ["Address Line 1", "Address line 1", "address line 1"],
-        "values": ["1234 W. Example St."],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "state": {
-        "keywords": ["State", "state"],
-        "values": ["Arizona"],
-        "select" : true,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "city": {
-        "keywords": ["City", "city"],
-        "values": ["Phoenix"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "zipcode": {
-        "keywords": ["Postal Code", "Postal code", "Zipcode", "Zip Code", "zipcode"],
-        "values": ["85309"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "county": {
-        "keywords": ["County", "county"],
-        "values": ["Maricopa"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "number": {
-        "keywords": ["Phone Number", "Phone number"],
-        "values": ["623-313-4313"],
-        "select" : false,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "previously_worked": {
-        "keywords": ["previously worked for", "previously worked at" ],
-        "values": ["No", "no"],
-        "select" : true,
-        "textarea": false,
-        "checkbox" : true
-    },
-    "employment_type": {
-        "keywords": ["Desired Type of Employment", "Type of Employment", "Employment Type"],
-        "values": ["Full-Time"],
-        "type": ["select"],
-        "select" : true,
-        "textarea": false,
-        "checkbox" : true
-    },
-    "over_18": {
-        "keywords": ["Are you age 18 or over", "Are you over 18", "18"],
-        "values": "Yes",
-        "select" : true,
-        "textarea": false,
-        "checkbox" : true
-    }, 
-    "relocate": {
-        "keywords": ["relocate"],
-        "values": ["Yes"],
-        "select" : true,
-        "textarea": false,
-        "checkbox" : true
-    },
-    "veteran": {
-        "keywords": ["veteran"],
-        "values": ["I am not a Veteran"],
-        "select" : true,
-        "textarea": false,
-        "checkbox" : false
-    },
-    "work_legally":{
-        "keywords": ["work legally"],
-        "values": ["Yes"],
-        "select": true,
-        "textarea": false,
-        "checkbox": false
-    },
-    "felony":{
-        "keywords": ["felony"],
-        "values": ["No"],
-        "select": true,
-        "textarea": false,
-        "checkbox": false
-    },
-    "hispanic": {
-        "keywords": ["Hispanic or Latino"],
-        "values": ["No"],
-        "select": true,
-        "textarea": false,
-        "checkbox": false
-    },
-    "compensation":{
-        "keywords": ["compensation", "salary"],
-        "values": ["20/hr"],
+    "phoneNumber": {
+        "values": [
+            "4802500084"
+        ],
+        "keywords": [
+            "Phone Number",
+            "Phone number",
+            "Mobile Number",
+            "Mobile number",
+            "mobile number"
+        ],
         "select": false,
         "textarea": false,
         "checkbox": false
     },
     "disability": {
-        "keywords": ["disability"],
-        "values": ["No"],
-        "select" : false,
+        "values": [
+            "No disability"
+        ],
+        "keywords": [
+            "disability"
+        ],
+        "select": false,
         "textarea": false,
-        "checkbox" : true
+        "checkbox": true
     },
     "sex": {
-        "keywords": ["sex", "gender"],
-        "values": ["Male"],
-        "select" : false,
+        "values": [
+            "Male"
+        ],
+        "keywords": [
+            "sex",
+            "gender"
+        ],
+        "select": false,
         "textarea": false,
-        "checkbox" : false
+        "checkbox": false
     },
-    "race": {
-        "keywords": ["race", "ethnicity"],
-        "values": ["White"],
-        "select" : false,
+    "ethnicity": {
+        "values": [
+            "Not Hispanic"
+        ],
+        "keywords": [
+            "ethnicity"
+        ],
+        "select": false,
         "textarea": false,
-        "checkbox" : false
+        "checkbox": false
+    },
+    "city": {
+        "values": [
+            "Phoenix"
+        ],
+        "keywords": [
+            "City",
+            "city"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "zipcode": {
+        "values": [
+            "85304"
+        ],
+        "keywords": [
+            "Postal Code",
+            "Postal code",
+            "Zipcode",
+            "Zip Code",
+            "zipcode"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "lastName": {
+        "values": [
+            "Gordon"
+        ],
+        "keywords": [
+            "Last Name",
+            "Last name",
+            "last name"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "address": {
+        "values": [
+            "4435 W. Sweetwater Ave"
+        ],
+        "keywords": [
+            "Address Line 1",
+            "Address line 1",
+            "address line 1"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "phoneNumberType": {
+        "values": [
+            "Mobile"
+        ],
+        "keywords": [
+            "Device Type",
+            "Phone Type",
+            "Device type",
+            "Phone type"
+        ],
+        "select": true,
+        "textarea": false,
+        "checkbox": false
+    },
+    "firstName": {
+        "values": [
+            "Jacob"
+        ],
+        "keywords": [
+            "First Name",
+            "First name",
+            "first name"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "state": {
+        "values": [
+            "AZ"
+        ],
+        "keywords": [
+            "State",
+            "state"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
     }
 }

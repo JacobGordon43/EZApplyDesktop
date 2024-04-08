@@ -6,7 +6,7 @@ def format_questions():
 
     for question, value in questions.items():
         json_entry = {
-            "values": value
+            "values": [value]
         }
         if question == "firstName":
             json_entry["keywords"] = ["First Name", "First name",  "first name"]
@@ -42,14 +42,22 @@ def format_questions():
             json_entry["keywords"] = ["Phone Number", "Phone number", "Mobile Number", "Mobile number", "mobile number"]
             json_entry["select"] = False 
             json_entry["textarea"] = False 
-            json_entry["checkbox"] = False 
+            json_entry["checkbox"] = False
+        elif question == "phoneNumberType":
+            json_entry["keywords"] = ["Device Type", "Phone Type", "Device type", "Phone type"]
+            json_entry["select"] = True 
+            json_entry["textarea"] = False 
+            json_entry["checkbox"] = False
+        else:
+            continue 
         json_arr[question] = json_entry
 
+        # json_arr['']
         questions = actions.handle_file('./json/unformatted_disclosure.json')
 
         for question, value in questions.items():
             json_entry = {
-                "values": value
+                "values": [value]
             }
             if question == "ethnicity":
                 json_entry["keywords"] = ["ethnicity"]
@@ -71,13 +79,110 @@ def format_questions():
                 json_entry["select"] = False 
                 json_entry["textarea"] = False 
                 json_entry["checkbox"] = True 
+            else:
+                continue
             json_arr[question] = json_entry
+        # Pr
+        json_arr["aboutUs"] = {
+        "keywords": ["Hear", "About"],
+        "values": ["LinkedIn"],
+        "select" : False,
+        "textarea": False,
+        "checkbox" : False
+        }
+        
+        json_arr["over18"] = {
+                    "keywords": ["Are you age 18 or over", "Are you over 18", "18"],
+        "values": "Yes",
+        "select" : True,
+        "textarea": False,
+        "checkbox" : True
+        }
+
+        json_arr["relocate"] = {
+                    "keywords": ["relocate"],
+        "values": ["Yes"],
+        "select" : True,
+        "textarea": False,
+        "checkbox" : True
+        }
+
+    json_arr["workLegally"] = {
+        "keywords": ["work legally"],
+        "values": ["Yes"],
+        "select": True,
+        "textarea": False,
+        "checkbox": False
+    }
+    json_arr["felony"] = {
+        "keywords": ["felony"],
+        "values": ["No"],
+        "select": True,
+        "textarea": False,
+        "checkbox": False
+    }
+    json_arr["compensation"] = {
+        "keywords": ["compensation", "salary"],
+        "values": ["20/hr"],
+        "select": False,
+        "textarea": False,
+        "checkbox": False
+    },
 
     with open("./json/questions.json", "w") as file: json.dump(json_arr, file, indent=4)
     print(json_arr)
 
+def format_work():
+    work_history = actions.handle_file('./json/unformatted_work.json')
+    count = 0
+    json_arr = {}
+    for work in work_history:
+        count += 1
+        str_count = str(count)
+        work_key = 'Work' + str_count
+        json_arr[work_key] = {}
+        for question, value in work.items():
+            json_entry = {
+                "values": [value]
+            }
+            if question == "location":
+                json_entry["keywords"] = ["Location", "location"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False
+            elif question == "company":
+                json_entry["keywords"] = ["Company", "company"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False
+            elif question == "from":
+                json_entry["keywords"] = ["Start Date", "Start date", "From", "from", "start date"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False
+            elif question == "to":
+                json_entry["keywords"] = ["To","to", "End date",  "end date", "End Date"]
+                json_entry["select"] = False
+                json_entry["textarea"] = False
+                json_entry["checkbox"] = False
+            elif question == "description":
+                json_entry["keywords"] = ["Description", "description"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False
+            elif question == "workTitle":
+                json_entry["keywords"] = ["Title", "title"]
+                json_entry["select"] = False 
+                json_entry["textarea"] = False 
+                json_entry["checkbox"] = False
+            else:
+                continue
+            json_arr[work_key][question] = json_entry
+        
+    with open("./json/work_tempfile.json", "w") as file: json.dump(json_arr, file, indent=4)
+
 def format_education():
-    schools = actions.handle_file('./json/education.json')
+    schools = actions.handle_file('./json/unformatted_education.json')
     count = 0
     json_arr = {}
     for school in schools:
@@ -90,10 +195,10 @@ def format_education():
             
             print(question)
             json_entry = {
-                "values": value
+                "values": [value]
             }
             if question == "endDate":
-                json_entry["keywords"] = ["From", "End date",  "end date", "End Date"]
+                json_entry["keywords"] = ["To","to", "End date",  "end date", "End Date"]
                 json_entry["select"] = False 
                 json_entry["textarea"] = False 
                 json_entry["checkbox"] = False
@@ -103,7 +208,7 @@ def format_education():
                 json_entry["textarea"] = False 
                 json_entry["checkbox"] = False
             elif question == "startDate":
-                json_entry["keywords"] = ["Start Date", "Start date", "To", "to", "start date"]
+                json_entry["keywords"] = ["Start Date", "Start date", "From", "from", "start date"]
                 json_entry["select"] = False 
                 json_entry["textarea"] = False 
                 json_entry["checkbox"] = False
