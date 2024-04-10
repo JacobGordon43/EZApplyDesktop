@@ -204,7 +204,7 @@ def format_education():
                 json_entry["checkbox"] = False
             elif question == "degree":
                 json_entry["keywords"] = ["Degree", "degree"]
-                json_entry["select"] = False 
+                json_entry["select"] = True 
                 json_entry["textarea"] = False 
                 json_entry["checkbox"] = False
             elif question == "startDate":
@@ -233,7 +233,7 @@ def format_education():
 
         
 
-    with open("./json/education_tempfile.json", "w") as file: json.dump(json_arr, file, indent=4)
+    with open("./json/education.json", "w") as file: json.dump(json_arr, file, indent=4)
     print(json_arr)
 
 def format_skills():

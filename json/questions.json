@@ -48,6 +48,40 @@
         "textarea": false,
         "checkbox": false
     },
+    "aboutUs": {
+        "keywords": [
+            "Hear",
+            "About"
+        ],
+        "values": [
+            "LinkedIn"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+    },
+    "over18": {
+        "keywords": [
+            "Are you age 18 or over",
+            "Are you over 18",
+            "18"
+        ],
+        "values": "Yes",
+        "select": true,
+        "textarea": false,
+        "checkbox": true
+    },
+    "relocate": {
+        "keywords": [
+            "relocate"
+        ],
+        "values": [
+            "Yes"
+        ],
+        "select": true,
+        "textarea": false,
+        "checkbox": true
+    },
     "city": {
         "values": [
             "Phoenix"
@@ -130,7 +164,7 @@
     },
     "state": {
         "values": [
-            "AZ"
+            "Arizona"
         ],
         "keywords": [
             "State",
@@ -139,5 +173,41 @@
         "select": false,
         "textarea": false,
         "checkbox": false
+    },
+    "workLegally": {
+        "keywords": [
+            "work legally"
+        ],
+        "values": [
+            "Yes"
+        ],
+        "select": true,
+        "textarea": false,
+        "checkbox": false
+    },
+    "felony": {
+        "keywords": [
+            "felony"
+        ],
+        "values": [
+            "No"
+        ],
+        "select": true,
+        "textarea": false,
+        "checkbox": false
+    },
+    "compensation": {
+    
+        "keywords": [
+            "compensation",
+            "salary"
+        ],
+        "values": [
+            "20/hr"
+        ],
+        "select": false,
+        "textarea": false,
+        "checkbox": false
+        
     }
 }

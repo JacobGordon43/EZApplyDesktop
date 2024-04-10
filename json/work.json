@@ -1,49 +1,49 @@
 {
     "job_1": {
         "title": {
-            "keyword": ["Job Title", "Title"],
+            "keywords": ["Job Title", "Title"],
             "values": ["Bus Boy"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "company": {
-            "keyword": ["Company"],
+            "keywords": ["Company"],
             "values": ["Shangri La"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "location": {
-            "keyword": ["Location"],
+            "keywords": ["Location"],
             "values": ["Phoenix, Arizona"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "currently_employed": {
-            "keyword": ["currently"],
+            "keywords": ["currently"],
             "values": [false],
             "select" : false,
             "textarea": false,
             "checkbox" : true
         },
         "from": {
-            "keyword": ["From"],
+            "keywords": ["From"],
             "values": ["062017"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "to": {
-            "keyword": ["To"],
+            "keywords": ["To"],
             "values": ["062018"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "description": {
-            "keyword": ["Description"],
+            "keywords": ["Description"],
             "values": ["As a bus boy, I cleaned the glass doors and bathroom mirrors at the start of every shift. My primary duties throughout my shift was to provide customers with drinks, clean off tables of dishes and wipe them down, keep my station clean and organized, and perform my daily task, such as doing a deep clean of a section of tables/booths or cleaning all metal with a cleaning solution. I ended every night by sweeping the floors and laying out napkins and silverware for the following day."],
             "select" : false,
             "textarea": true,
@@ -52,43 +52,43 @@
     },
     "job_2": {
         "title": {
-            "keyword": ["Job Title", "Title"],
-            "values": ["Software Engineer Intern"],
+            "keywords": ["Job Title", "Title"],
+            "values": ["Warehouse Associate"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "company": {
-            "keyword": ["Company"],
-            "values": ["OpenPark"],
+            "keywords": ["Company"],
+            "values": ["Amazon"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "location": {
-            "keyword": ["Location"],
-            "values": ["Remote"],
+            "keywords": ["Location"],
+            "values": ["Phoenix, Arizona"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
+        },
+        "currently_employed": {
+            "keywords": ["currently"],
+            "values": [true],
+            "select" : false,
+            "textarea": false,
+            "checkbox" : true
         },
         "from": {
-            "keyword": ["From"],
-            "values": ["092023"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false
-        },
-        "to": {
-            "keyword": ["To"],
-            "values": ["112023"],
+            "keywords": ["From"],
+            "values": ["072020"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "description": {
-            "keyword": ["Description"],
-            "values": ["I worked on a Chat-GPT oriented application for pet owners. I enhanced the UI and ensured that it was consistently mobile friendly, added a credit system, and consistently communicated with the CEO to understand what he wanted and receive feedback on what I was implementing. I also created a purchase page for credits and implemented Stripe's API for the checkout process."],
+            "keywords": ["Description"],
+            "values": ["At Amazon, I have performed various tasks, ranging from meeting a personal rate to working in a team environment to ensure that the other parts of the process had work. I have worked as a returns processor, picker, and stower. I’ve also worked as a dock worker, cart runner, and tote team member, all of which I communicated consistently with upper management and other team members who I worked with to ensure a smooth and efficient process."],
             "select" : false,
             "textarea": true,
             "checkbox" : false
@@ -96,43 +96,43 @@
     },
     "job_3": {
         "title": {
-            "keyword": ["Job Title", "Title"],
-            "values": ["Warehouse Associate"],
+            "keywords": ["Job Title", "Title"],
+            "values": ["Software Engineer Intern"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "company": {
-            "keyword": ["Company"],
+            "keywords": ["Company"],
             "values": ["Amazon"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "location": {
-            "keyword": ["Location"],
-            "values": ["Phoenix, Arizona"],
+            "keywords": ["Location"],
+            "values": ["Remote"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
-        "currently_employed": {
-            "keyword": ["currently"],
-            "values": [true],
+        "from": {
+            "keywords": ["From"],
+            "values": ["092023"],
             "select" : false,
             "textarea": false,
-            "checkbox" : true
+            "checkbox" : false
         },
-        "from": {
-            "keyword": ["From"],
-            "values": ["072020"],
+        "to": {
+            "keywords": ["From"],
+            "values": ["0112023"],
             "select" : false,
             "textarea": false,
             "checkbox" : false
         },
         "description": {
-            "keyword": ["Description"],
-            "values": ["At Amazon, I have performed various tasks, ranging from meeting a personal rate to working in a team environment to ensure that the other parts of the process had work. I have worked as a returns processor, picker, and stower. I’ve also worked as a dock worker, cart runner, and tote team member, all of which I communicated consistently with upper management and other team members who I worked with to ensure a smooth and efficient process."],
+            "keywords": ["Description"],
+            "values": ["I worked on a Chat-GPT oriented application for pet owners. I enhanced the UI and ensured that it was consistently mobile friendly, added a credit system, and consistently communicated with the CEO to understand what he wanted and receive feedback on what I was implementing. I also created a purchase page for credits and implemented Stripe's API for the checkout process."],
             "select" : false,
             "textarea": true,
             "checkbox" : false

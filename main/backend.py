@@ -130,4 +130,3 @@ def get_data():
     with open("./json/unformatted_work.json", 'w') as file: json.dump(questions, file, indent=4)
     # Formats the work file
     FQ.format_work()
-get_data()

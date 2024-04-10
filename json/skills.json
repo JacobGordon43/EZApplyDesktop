@@ -4,9 +4,39 @@
             "Skills"
         ],
         "values": [
-            "dafasdf",
-            "dafasdf",
-            "dafasdf"
+            "React.js",
+            "Problem Solving",
+            "C Sharp (Programming Language)",
+            "JavaScript",
+            "JavaScript Frameworks",
+            "Express.js",
+            "Next.js",
+            "Java",
+            "JSON",
+            "Web Development",
+            "Database Development",
+            "MySQL",
+            "Cloud Computing",
+            "Cascading Style Sheets (CSS)",
+            "MongoDB",
+            "Hyper Text Markup Language (HTML)",
+            "PHP (Programming Language)",
+            "API Development",
+            "Angular",
+            "Spring Boot",
+            "Node.js",
+            "RESTful APIs",
+            "Git",
+            "ASP.NET",
+            "AWS Lambda",
+            "Amazon Web Services",
+            "DynamoDB",
+            "AWS API Gateway",
+            "NoSQL",
+            "Model-View-Controller (MVC)",
+            "GitHub",
+            "Software Development Life Cycle",
+            "Material UI"
         ]
     }
 }

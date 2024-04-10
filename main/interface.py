@@ -5,6 +5,7 @@ from tkinter import filedialog
 from tkinter import Label
 import os
 import shutil
+import backend
 from pathlib import Path
 import sys
 # Setting up the UI of the main window
@@ -115,7 +116,8 @@ def uploadCoverLetter(resume):
 
 def update():
     print("Updating")
-
+    backend.get_data()
+    print("Finished Updating")
 # Setting up entry fields
 inputs = ["Link", "Browser", "Select Location", "Browser Location", "Upload Resume", "Uploaded Resume", "Upload Cover Letter", "Uploaded Cover Letter"]
 fields = []

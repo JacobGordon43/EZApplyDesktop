@@ -34,7 +34,7 @@
                 "Degree",
                 "degree"
             ],
-            "select": false,
+            "select": true,
             "textarea": false,
             "checkbox": false
         },

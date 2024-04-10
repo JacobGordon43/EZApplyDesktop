@@ -1,71 +1,82 @@
 {
-    "gcu": {
-        "school": {
-            "keyword": [
-                "School",
-                "University"
+    "School1": {
+        "endDate": {
+            "values": [
+                "2024"
             ],
+            "keywords": [
+                "To",
+                "to",
+                "End date",
+                "end date",
+                "End Date"
+            ],
+            "select": false,
+            "textarea": false,
+            "checkbox": false
+        },
+        "GPA": {
+            "values": [
+                "3.7"
+            ],
+            "keywords": [
+                "GPA"
+            ],
+            "select": false,
+            "textarea": false,
+            "checkbox": false
+        },
+        "degree": {
+            "values": [
+                "Bachelor"
+            ],
+            "keywords": [
+                "Degree",
+                "degree"
+            ],
+            "select": true,
+            "textarea": false,
+            "checkbox": false
+        },
+        "schoolName": {
             "values": [
                 "Grand Canyon University"
             ],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false        
-        },
-        "degree": {
-            "keyword": [
-                "Degree"
+            "keywords": [
+                "School",
+                "University"
             ],
+            "select": false,
+            "textarea": false,
+            "checkbox": false
+        },
+        "startDate": {
             "values": [
-                "BACHELOR - IN PROGRESS"
+                "2020"
             ],
-            "select" : true,
+            "keywords": [
+                "Start Date",
+                "Start date",
+                "From",
+                "from",
+                "start date"
+            ],
+            "select": false,
             "textarea": false,
-            "checkbox" : false        
+            "checkbox": false
         },
-        "study": {
-            "keyword": [
+        "field": {
+            "values": [
+                "Computer Science"
+            ],
+            "keywords": [
                 "Field of Study",
                 "Field",
                 "Study"
             ],
-            "values": [
-                "Computer Science"
-            ],
-            "select" : false,
+            "select": false,
             "textarea": false,
-            "checkbox" : false        
-        },
-        "gpa": {
-            "keyword": [
-                "GPA"
-            ],
-            "values": ["3.75"],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false
-        },
-        "from": {
-            "keyword": [
-                "From"
-            ],
-            "values": [
-                "2020"
-            ],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false        
-        },
-        "to": {
-            "keyword": [
-                "To"
-            ],
-            "values": [
-                "2024"
-            ],
-            "select" : false,
-            "textarea": false,
-            "checkbox" : false        
+            "checkbox": false
         }
     }
 }

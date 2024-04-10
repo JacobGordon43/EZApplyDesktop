@@ -91,8 +91,12 @@ def process_questions(driver, questions):
     counter = 0
     for question, value in questions.copy().items():
         # Waits for inputs to be found on the page, indicating that it is loaded enough to continue
-        if counter == 0:
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input")))
+        try:
+            if counter == 0:
+                WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "//input")))
+        except:
+            print("Could not find input for work.")
+            return questions
         print("Iteration")
         print(questions)
         print(question)
@@ -149,7 +153,7 @@ def process_history(driver, experiences, category):
             print(current_experience[question])
             input_found = False
             counter = 0
-            keywords = current_experience[question]["keyword"]
+            keywords = current_experience[question]["keywords"]
             # Goes through each keyword 
             for keyword in keywords:
                 # Attempts to find labels 
@@ -160,17 +164,26 @@ def process_history(driver, experiences, category):
                     # Attempts to find the question
                     labels = driver.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]")
                     # If the label is out of bounds, it will attempt to 
+
                     try:
                         label = labels[i]
                         input_found = True
+                        # hover = AC(driver).move_to_element(btn)
+                        # hover.click().perform()
                     except:
-                        try:
-                            hover = AC(driver).move_to_element(btn)
-                            hover.click().perform()
-                            label = labels[i]
-                            break
-                        except:
-                            print("There was an issue clicking on this, attempting another element")
+                        print("There was an issue clicking on this, attempting another element")
+
+                    # try:
+                    #     label = labels[i]
+                    #     input_found = True
+                    # except:
+                    #     try:
+                    #         hover = AC(driver).move_to_element(btn)
+                    #         hover.click().perform()
+                    #         label = labels[i]
+                    #         break
+                    #     except:
+                    #         print("There was an issue clicking on this, attempting another element")
 
                     input_found = True
 
@@ -178,6 +191,7 @@ def process_history(driver, experiences, category):
                 if len(labels) == 0:
                     continue
                 else:
+                    print(current_experience[question]["select"])
                     # Attempts to find the correct input based on what type input type it should expect.
                     if current_experience[question]["select"]:
                         inputs = label.find_elements(By.XPATH, "//*[contains(text(), '" + category + "')]//following::label[contains(text(), '" + keyword + "')]//following::button[contains(@id, 'input')][1]")
@@ -246,7 +260,7 @@ def add_skills(driver):
         for skill in skills['skills']["values"]:
             inputs = driver.find_elements(By.XPATH, "//*[contains(text(), 'Skills')]//following::input[1]")
             handle_input(driver, inputs, "Skills", skill)
-            return True
+        return True
     return False
 
 def is_review(driver):
@@ -263,7 +277,7 @@ def fill_out_application(driver, questions, education_done, skills_done, work_do
     try:
         # review_page = is_review(driver)
         # if not review_page:
-            # Checks each before attempting to fill out the rest of the page
+        #     Checks each before attempting to fill out the rest of the page
         try:
             if not skills_done:
                 skills_done = add_skills(driver)
@@ -308,7 +322,7 @@ def fill_out_application(driver, questions, education_done, skills_done, work_do
         if len(completed_keywords) > 0:
             for element in completed_keywords:
                 if element.is_displayed():
-                    break
+                    return 1
             return 0
         # TODO create a conditional that will determine if the application has been submitted and returns 1
         # it will then be return 1 through each iteration of the process, unless there is an error, in which that value will be returned

@@ -1,16 +1,136 @@
 {
     "skills": [
         {
-            "key": "0f3d2c6d-88d3-473f-a8f5-6d127af407d4",
-            "skill": "dafasdf"
+            "key": "20cae6a3-540f-4d68-83e3-e09c1fa40699",
+            "skill": "React.js"
         },
         {
-            "key": "e1196830-1b46-488c-89b8-1af8f00357c4",
-            "skill": "dafasdf"
+            "key": "4e042b65-5db3-4b7b-84d2-7e343c321ca2",
+            "skill": "Problem Solving"
         },
         {
-            "key": "c8eec476-6de1-4def-b3f9-766c6ebc5f68",
-            "skill": "dafasdf"
+            "key": "05ad906b-8b59-443b-bd8e-e472a6c23410",
+            "skill": "C Sharp (Programming Language)"
+        },
+        {
+            "key": "f8b66600-b8c6-4ad6-9d7c-811200a7d497",
+            "skill": "JavaScript"
+        },
+        {
+            "key": "7528e0f7-5287-49da-b3e4-59e3b3694c3b",
+            "skill": "JavaScript Frameworks"
+        },
+        {
+            "key": "5f4b8121-d8a3-4304-b010-b2f9531c395a",
+            "skill": "Express.js"
+        },
+        {
+            "key": "af281237-2b36-4a92-b3b1-41108bee81ac",
+            "skill": "Next.js"
+        },
+        {
+            "key": "0973accc-0d19-40b2-9224-5fd32729c626",
+            "skill": "Java"
+        },
+        {
+            "key": "c2862719-b124-47f2-bcc9-f2d251c8df9a",
+            "skill": "JSON"
+        },
+        {
+            "key": "fbe3b0d4-a275-4b1e-916c-9c4fae447cbc",
+            "skill": "Web Development"
+        },
+        {
+            "key": "9b882f83-206e-4282-9347-01bd56dcecf2",
+            "skill": "Database Development"
+        },
+        {
+            "key": "9ad82965-80f0-4a9e-aa0f-32d39b3985d3",
+            "skill": "MySQL"
+        },
+        {
+            "key": "09d996c1-23c4-4356-accb-6fb8d8ff18e3",
+            "skill": "Cloud Computing"
+        },
+        {
+            "key": "bd5962cf-9eb5-4d06-9b5b-f320a0df9229",
+            "skill": "Cascading Style Sheets (CSS)"
+        },
+        {
+            "key": "6563867d-28d3-4346-a8c0-3ae6d61f17b4",
+            "skill": "MongoDB"
+        },
+        {
+            "key": "aab252b6-3bc7-4dd9-a504-74f43d38779d",
+            "skill": "Hyper Text Markup Language (HTML)"
+        },
+        {
+            "key": "cff4213c-da72-4124-89d3-5b6a3895cce8",
+            "skill": "PHP (Programming Language)"
+        },
+        {
+            "key": "60108d1e-8ce0-4fba-9e7f-8844805fd29f",
+            "skill": "API Development"
+        },
+        {
+            "key": "d1b66571-bb3e-40b7-ac60-7be5a99ab5e3",
+            "skill": "Angular"
+        },
+        {
+            "key": "1aaa2e03-b40b-43f4-818b-1f29591e763a",
+            "skill": "Spring Boot"
+        },
+        {
+            "key": "4f1a1054-a3a5-417a-bb6c-f64ef5dba36e",
+            "skill": "Node.js"
+        },
+        {
+            "key": "d03cafe4-38a1-4207-8043-f6c005356b37",
+            "skill": "RESTful APIs"
+        },
+        {
+            "key": "3ceaa47f-e023-4b4d-a7b9-a07562088000",
+            "skill": "Git"
+        },
+        {
+            "key": "156f08e3-5a87-4de3-aa36-812a5100db98",
+            "skill": "ASP.NET"
+        },
+        {
+            "key": "3b2f80cd-6310-49c6-b0da-392d10beffaf",
+            "skill": "AWS Lambda"
+        },
+        {
+            "key": "af936fa4-8c29-47e4-acef-fe8a3ede02f0",
+            "skill": "Amazon Web Services"
+        },
+        {
+            "key": "a6f232b0-0ea2-45c8-b703-759a882df49b",
+            "skill": "DynamoDB"
+        },
+        {
+            "key": "f2bd1827-f77d-4710-b7f1-a549bc13804f",
+            "skill": "AWS API Gateway"
+        },
+        {
+            "key": "739ee98d-bad1-47a0-a112-993bb140f11f",
+            "skill": "NoSQL"
+        },
+        {
+            "key": "a50ddd10-4a02-48b4-ad92-ecd0a778cb4f",
+            "skill": "Model-View-Controller (MVC)"
+        },
+        {
+            "key": "3c9c992b-0309-480a-84ff-202a320102ef",
+            "skill": "GitHub"
+        },
+        {
+            "key": "c249994a-5b76-4fc2-b46f-d9a2a1b46c07",
+            "skill": "Software Development Life Cycle"
+        },
+        {
+            "key": "87805979-1bc9-40c4-a1bf-7013f55d79a3",
+            "skill": "Material UI"
         }
     ],
     "userId": "442d1f96-6561-4e1c-a533-5871c3c79a2e",

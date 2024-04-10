@@ -1,13 +1,13 @@
 [
     {
-        "endDate": "33/33",
+        "endDate": "04/2024",
         "userId": "442d1f96-6561-4e1c-a533-5871c3c79a2e",
-        "GPA": "3.3",
+        "GPA": "3.7",
         "formId": "4932007f-d550-4659-a854-dc64c964d62e",
         "degree": "Bachelor",
-        "schoolName": "GCU",
-        "startDate": "03/33",
-        "field": "C.S.",
+        "schoolName": "Grand Canyon University",
+        "startDate": "09/2020",
+        "field": "Computer Science",
         "key": "17c799c8-f325-4001-9f56-ca2375de17d5"
     }
 ]
