@@ -39,7 +39,7 @@ def apply(link, browser):
     # except:
     #     return 15
     
-    driver.get("https://earlywarning.wd5.myworkdayjobs.com/en-US/earlywarningcareers/job/Intern---DevOps-Software-Engineering--Summer-2024-_REQ2024243?utm_source=ziprecruiter")
+    driver.get("https://drivetime.wd1.myworkdayjobs.com/DriveTime/job/1720-W-Rio-Salado-Pkwy-Tempe-AZ-85281/Software-Engineer--Node----REMOTE_R6713?source=Linkedin")
     # driver.get("https://gcu.wd1.myworkdayjobs.com/en-US/GCE/job/AZ-Phoenix/Developer-I_R000053793-1")
     found_application = False
     completed = 0
@@ -64,5 +64,4 @@ def apply(link, browser):
 
     return completed
 
-# main(["Test@cox.net", "Test"], "Software Engineer", "Phoenix, Arizona")
 

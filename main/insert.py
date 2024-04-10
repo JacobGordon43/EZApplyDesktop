@@ -275,9 +275,7 @@ def is_review(driver):
 def fill_out_application(driver, questions, education_done, skills_done, work_done):
 # Handles the majority of the logic
     try:
-        # review_page = is_review(driver)
-        # if not review_page:
-        #     Checks each before attempting to fill out the rest of the page
+# Goes through and checks if there is a form for skills, work, education, or a way to upload documents
         try:
             if not skills_done:
                 skills_done = add_skills(driver)
@@ -306,9 +304,6 @@ def fill_out_application(driver, questions, education_done, skills_done, work_do
         result = process_questions(driver, questions)
         # Finds all the current labels on the page
         labels = driver.find_elements(By.TAG_NAME, "label")
-
-        # # Now that all questions have been looped through, it will now attempt to submit
-        # actions.click_btn(driver, ["Continue", "Apply", "Complete", "Finish", "Submit"])
         new_labels = driver.find_elements(By.TAG_NAME, "label")
         
         #The program will continuously check if the labels are the same on the page and sleep for a second until it changes
@@ -318,7 +313,7 @@ def fill_out_application(driver, questions, education_done, skills_done, work_do
             print("Waiting for the user to continue the application")
             time.sleep(1)
         
-        completed_keywords = driver.find_elements(By.XPATH, "//*[contains(text(), 'completed')] | //*[contains(text(), 'Congratulations')]")
+        completed_keywords = driver.find_elements(By.XPATH, "//*[contains(text(), 'You have finished')] | //*[contains(text(), 'You have completed')] | //*[contains(text(), 'You have submitted')] | //*[contains(text(), 'You have successfully')] | //*[contains(text(), 'Congratulations')]")
         if len(completed_keywords) > 0:
             for element in completed_keywords:
                 if element.is_displayed():
