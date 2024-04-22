@@ -25,3 +25,4 @@ There were a great deal of requirements for the desktop application, with the fo
 
 ### Code Snippets
 ![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/8b874e05-7d15-4739-9b1e-0ca449292077)
+This rather small function handles the entire logic for completing an application. It first finds the application by repeatedly running a function until it identifies that it found the actual application. Then, a new loop starts that runs the logic of identifying questions and inserting values to the corresponding input.
