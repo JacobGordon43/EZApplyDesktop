@@ -26,3 +26,12 @@ There were a great deal of requirements for the desktop application, with the fo
 ### Code Snippets
 ![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/8b874e05-7d15-4739-9b1e-0ca449292077)
 This rather small function handles the entire logic for completing an application. It first finds the application by repeatedly running a function until it identifies that it found the actual application. Then, a new loop starts that runs the logic of identifying questions and inserting values to the corresponding input.
+
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/f98b64fe-9816-484a-b352-c7ea5bced744)
+This snippet handles running the various specific aspects of application process. For example, it identifies whether or not there is a Work Section in the application, which if there is, it will run the logic to handle that accordingly.
+
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/45f2ffb2-329c-4f96-97c7-31791e55228a)
+This further shows how the functions displayed above work. Each one is similar, but it uses a find_elements to see if it's on the application. It goes through each element and sees if it is displayed, which is how it identifies that it can access that part of the application. If it is found, it then will run a function that lets it handle education and work history
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/bd8043de-2ab5-4f08-837a-b8af0d5118ad)
+There is a lot of logic that goes into finding an input for the questions, but ultimately this function is ran and enters in the input, and ensures that it is done correctly by entering. This helps with certain inputs as typing isn't enough to get the answer, such as selecting the source of how you found the job listing.
+
