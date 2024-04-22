@@ -5,6 +5,12 @@ The desktop application utilized tkinter for an interface. A start file determin
 ### The Problem And Solution
 To obtain a job, you must repeatedly apply to job after job. Many of these asks the same questions, from personal information to lengthy job and education history. Additionally, it can take 100-200 job applications to land a job, resulting in what can be countless hours wasted on job applications alone. EZApply's Desktop application focuses on solving this issue by automating the process, filling out commonly asked questions to reduce minutes off each application you do.
 
+### Technologies
+* Python
+* Selenium
+* WebDriver
+* Tkinter
+  
 ### What I learned
 The biggest thing I learned was how to use selenium to effeciently manipulate a website to navigate through it. I also learned how to get around certain ways that websites try to block automation through shadow DOMs, which attempt to prevent the automation from clicking on certian things, i.e. buttons.
 
