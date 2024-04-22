@@ -21,7 +21,12 @@ There were a great deal of requirements for the desktop application, with the fo
 * Non-Functional
   * Be able to select Chrome, Edge, or FireFox to run the software
     
-### Flowchart
+### Flowcharts
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/7d3d1b5f-2bc2-4e9d-b984-c986441903f3)
+This flowchart illustrates the general flow of the software. There are some parts that weren't fully implemented. such as browser version error. Rather than using a different library, it instead now will display an error message. Most of the rest of the logic still holes true, from finding the application to how it handles history, identifying different types of inputs and handling them, etc.
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/d9037dbc-8836-4329-bd48-03c8c3d3925c)
+This flowchart shows how it finds the application by identifying aspects of the website, such as apply buttons, login content, etc., and how to handle it. There have been some alterations, such as the logic being more of in a loop logic rather than apply > login > form.
+
 
 ### Code Snippets
 ![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/8b874e05-7d15-4739-9b1e-0ca449292077)
