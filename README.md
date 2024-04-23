@@ -50,8 +50,8 @@ This flowchart shows how it finds the application by identifying aspects of the 
 
 ### Website Wireframe
 ![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/0dd2ea97-deb5-454f-bb9d-0268ab90b047)
-![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/3db424e3-6bab-42b5-a823-4331650c327f)
-![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/741f7a31-61a1-46aa-bced-522d49f0975a)
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/f658ab69-e87b-499c-a4ec-b424bb98f6ae)
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/e00fc8aa-76e5-4877-aec5-99bbc73e9ad9)
 
 ### Code Snippets
 ![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/8b874e05-7d15-4739-9b1e-0ca449292077)
