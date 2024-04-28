@@ -1,4 +1,6 @@
 # EZApply Desktop
+Selenium Desktop Github: https://github.com/JacobGordon43/EZApplyDesktop
+Web Application Github: https://github.com/JacobGordon43/EZApplyNow
 ### Description
 EZApply is a two application capstone consisting of a website and a desktop application. The website, made using Next.js, was made to allow users to create accounts and upload the data that they would enter into a job application. The desktop application utilized tkinter for an interface. A start file determines if a user is logged in or not and displays the corresonding UI as needed. Once a user is logged in, they a UI pops up that allows a user to enter in a job link. A python selenium file then automates the job application process by using identifying keywords to locate the inputs to then enter in the corresponding values. When they log in, there job data is obtained from the database and stored, then formatted and stored again in the correct format so that it can be utilized by the software. Additionally, there is a button on the main UI that allows you to retrieve an updated version of your data from the database. A logout button deletes your files so that the start file can identify that you are no longer logged in.
 
