@@ -15,6 +15,9 @@ To obtain a job, you must repeatedly apply to job after job. Many of these asks 
 * Selenium - It's the most commonly used web automation library, which meant that it would have a lot of support and documentation that I could use as issues came up.
 * Tkinter - I used this library for the UI end of the desktop since it was one of the easier libraries to use and I didn't need anything particularly fancy or complex.
   
+### Challenges
+The large scope was, in itself, a significant challenge as I had to learn various different technologies and have them all implemented so to have a functional end product. I initially had anticipated on being done with the website within 2-3 weeks, however it became riddled with issues and it's development took much longer than I anticipated. Integrating lambda functions with the API Gateway was also a major learning curve and took a lot of trial and error to get implemented, which slowed the development process down significantly. Once I reached the desktop application, I had lost a lot of the time I thought I would have to perfect it. 
+
 ### What I learned
 The biggest thing I learned was how to use selenium to effeciently manipulate a website to navigate through it. I also learned how to get around certain ways that websites try to block automation through shadow DOMs, which attempt to prevent the automation from clicking on certian things, i.e. buttons.
 
