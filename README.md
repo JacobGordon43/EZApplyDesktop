@@ -6,15 +6,14 @@ EZApply is a two application capstone consisting of a website and a desktop appl
 To obtain a job, you must repeatedly apply to job after job. Many of these asks the same questions, from personal information to lengthy job and education history. Additionally, it can take 100-200 job applications to land a job, resulting in what can be countless hours wasted on job applications alone. EZApply uses a website to allow users to upload their job application information (first/last name, phone, work/education, etc.). The Desktop application then focuses on solving using that data by automating the job application process, using the data uploaded to fill out commonly asked questions to reduce minutes off each application you do.
 
 ### Technologies
-* Next.js (React Framework)
-* TailwindCSS
-* TypeScript
-* AWS DynamoDB, API Gateway, Lambda Functions (written in Node.js)
-* Redux (Global State Management)
-* Python
-* Selenium
-* WebDriver
-* Tkinter
+* Next.js (React Framework) - Selected as it is fast and server side rendering. It was also a new technology I wanted to try.
+* TailwindCSS - Selected as it comes by default with Next.js. It also made frontend development very fast and easy
+* TypeScript - Selected as it comes with Next.js by default, but I also was interested in further exploring this technology. I'm glad that I did as it pushed me a lot.
+* AWS DynamoDB, API Gateway, Lambda Functions (written in Node.js) - I wanted to utilize AWS as much as I could in my capstone. This approach allowed me to do that while also having an entire RESTful API developed to handle my entire backend.
+* Redux (Global State Management) - Redux is a commonly used technology in the industry for React applications. Global state management helped with reducing the number of calls being made to API by keeping the data persistent.
+* Python - I wanted to learn Python as I see it listed as a desired language in a lot of job applciations
+* Selenium - It's the most commonly used web automation library, which meant that it would have a lot of support and documentation that I could use as issues came up.
+* Tkinter - I used this library for the UI end of the desktop since it was one of the easier libraries to use and I didn't need anything particularly fancy or complex.
   
 ### What I learned
 The biggest thing I learned was how to use selenium to effeciently manipulate a website to navigate through it. I also learned how to get around certain ways that websites try to block automation through shadow DOMs, which attempt to prevent the automation from clicking on certian things, i.e. buttons.
