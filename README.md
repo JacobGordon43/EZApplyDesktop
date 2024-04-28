@@ -49,6 +49,10 @@ In the physical solution, an S3 bucket holds our web application and is monitore
 ![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/6bd8f793-ed74-4e89-a7ac-35176df71cdb)
 The logical solution consists of a Next.js frontend application that uses redux, components, and pages, and is stored in an S3 bucket. It communicates to the AWS Backend Infrastructure, which is made up of the API gatway, Lambda functions, and DynamoDB database. Finally, the Desktop Python Application is developed with a TKinter UI and Selenium as it's automation tool, with Chrome Driver being used to handle the chrome browser.
 
+### Website Sitemap
+![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/27f8a521-39e5-45ca-834a-1f67fa31a9d8)
+This sitemap illustrates the users ability to navigate through the web application. 
+
 ### Website Wireframe
 The following are the wireframes with the components outlined. The input component was removed in development due to issues with handling values in the overall form.
 ![image](https://github.com/JacobGordon43/EZApplyDesktop/assets/77366005/0dd2ea97-deb5-454f-bb9d-0268ab90b047)
